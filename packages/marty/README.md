@@ -20,17 +20,19 @@ This is an implementation of a hierarchical state machine (HSM) or a statechart 
 If you plan to make changes to the code, then here are some steps to get your started in building and testing the code.
 #### Installing
 ```shell
+yarn
+```
+or 
+```shell
 npm install
-typings install
 ```
 #### Building
 ```shell
-gulp clean
-gulp
+npm run build
 ```
 #### Testing
 ```shell
-gulp test
+npm run test
 ```
 ***NOTE*: Test code is lacking at the moment, but feel free to add!**
 
