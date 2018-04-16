@@ -1,6 +1,6 @@
 {
     "name": "@martyhsm/marty",
-    "version": "1.0.5",
+    "version": "1.1.0-alpha.b113f4b0",
     "description": "",
     "main": "index.js",
     "scripts": {
