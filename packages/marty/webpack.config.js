@@ -9,36 +9,6 @@ module.exports = [{
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/
-            }, {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                use: [
-                    'url-loader?limit=10000',
-                    {
-                        loader: 'img-loader',
-                        options: {
-                            enabled: process.env.NODE_ENV === 'production',
-                            gifsicle: {
-                                interlaced: false
-                            },
-                            mozjpeg: {
-                                progressive: true,
-                                arithmetic: false
-                            },
-                            optipng: false, // disabled
-                            pngquant: {
-                                floyd: 0.5,
-                                speed: 2
-                            },
-                            svgo: {
-                                plugins: [
-                                    { removeTitle: true },
-                                    { convertPathData: false }
-                                ]
-                            }
-                        }
-                    }
-                ],
-                exclude: /node_modules/
             }]
         },
         resolve: {
@@ -57,6 +27,10 @@ module.exports = [{
         plugins: [
             new CopyWebpackPlugin([{
                 from: 'src/**/*',
+                to: './ts',
+                flatten: true
+            }, {
+                from: 'src/marty.ts',
                 to: '.',
                 flatten: true
             }], {

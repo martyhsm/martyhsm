@@ -5,8 +5,8 @@
     "main": "index.js",
     "scripts": {
         "prepublish": "npm run build",
-        "build": "npm run clean && webpack --config webpack.config.js",
-        "clean": "rimraf dist",
+        "build": "npm run clean && webpack --config webpack.config.js && tsc",
+        "clean": "rimraf dist example/example.js example/stoplight.js",
         "test": "npm run build && jasmine \"./dist/test/**/*Spec.js\""
     },
     "author": "Brandon Phillips <brandon.phililps@live.com>",
@@ -34,9 +34,11 @@
     },
     "files": [
         "dist/marty.js",
-        "dist/marty.ts",
-        "example/example.js",
-        "example/index.html",
-        "example/stoplight.js"
-    ]
+        "dist/marty.ts"
+    ],
+    "directories": {
+        "dist/js": "dist/js",
+        "dist/ts": "dist/ts",
+        "dist/example": "dist/example"
+    }
 }
