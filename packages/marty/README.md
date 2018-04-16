@@ -46,7 +46,7 @@ Open the included ./example/index.html file in a browser (after installing depen
 
 Here is an example of the output (NOTE: the output is random, so yours could look different):
 
-![alt tag](https://github.com/martyhsm/martyhsm/blob/master/images/example_output.png?raw=true)
+![alt tag](https://github.com/martyhsm/martyhsm/blob/master/images/example_output.PNG?raw=true)
 
 ### Creating an HSM
 In this example, we'll just make a state machine for an autonomous stoplight that is set to run for 60 seconds. It will iterate through red, yellow, and great lights. Randomly, someone will crash into the stop light OR it will go off naturally. Here's a diagram:
