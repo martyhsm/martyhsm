@@ -40,6 +40,6 @@
     "directories": {
         "js": "dist/js",
         "ts": "dist/ts",
-        "example": "dist/example"
+        "example": "example"
     }
 }
