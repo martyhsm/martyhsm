@@ -38,8 +38,8 @@
         "dist/marty.ts"
     ],
     "directories": {
-        "dist/js": "dist/js",
-        "dist/ts": "dist/ts",
-        "dist/example": "dist/example"
+        "js": "dist/js",
+        "ts": "dist/ts",
+        "example": "dist/example"
     }
 }
