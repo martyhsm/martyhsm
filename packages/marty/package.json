@@ -4,12 +4,16 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "prepublish": "npm run build",
         "build": "npm run clean && webpack --config webpack.config.js",
-        "clean": "rimraf dist example/example.js example/stoplight.js",
+        "clean": "rimraf dist",
         "test": "npm run build && jasmine \"./dist/test/**/*Spec.js\""
     },
-    "author": "Brandon Phillips (brandon.phililps@live.com)",
-    "license": "MIT",
+    "author": "Brandon Phillips <brandon.phililps@live.com>",
+    "contributors": [
+        "Brandon Phillips <brandon.phililps@live.com>"
+    ],
+    "license": "BSD-3-Clause",
     "dependencies": {
         "@types/lodash": "^4.14.106",
         "lodash": "^4.17.5"

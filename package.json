@@ -18,8 +18,11 @@
         "instruction",
         "UML"
     ],
-    "author": "Brandon Phillips (brandon.phillips@live.com)",
-    "license": "MIT",
+    "author": "Brandon Phillips <brandon.phillips@live.com>",
+    "contributors": [
+        "Brandon Phillips <brandon.phillips@live.com>"
+    ],
+    "license": "BSD-3-Clause",
     "description": "This is an implementation of a hierarchical state machine (HSM) or a statechart with a few new features like:\r - instruction queuing\r - event payloads\r - \"parallel\" state machines",
     "main": "index.js",
     "dependencies": {
