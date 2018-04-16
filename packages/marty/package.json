@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "prepublish": "npm run build",
+        "postpublish": "npm run build",
         "build": "npm run clean && webpack --config webpack.config.js",
         "clean": "rimraf dist",
         "test": "npm run build && jasmine \"./dist/test/**/*Spec.js\""
