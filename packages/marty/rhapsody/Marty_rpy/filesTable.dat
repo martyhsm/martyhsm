@@ -1,0 +1,13 @@
+I-Logix-RPY-Archive version 8.5.2 Modeler * 1159120
+
+- filesTable = { IRPYRawContainer 
+	- size = 6;
+	- value = "Marty.rpy" ""
+	"Marty_rpy\\Default.sbs" "Default"
+	"Marty_rpy\\DefaultComponent.cmp" "DefaultComponent"
+	"Marty_rpy\\FSM.sbs" "FSM"
+	"Marty_rpy\\Marty.sbs" "Marty"
+	"Projects.rpl" ""
+	
+}
+
