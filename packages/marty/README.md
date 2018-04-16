@@ -38,7 +38,7 @@ npm run test
 
 #### Including in browser
 ```html
-<script src="~/dist/marty.js"></script>
+<script src="~/node_modules/dist/marty.js"></script>
 ```
 
 #### Running example
