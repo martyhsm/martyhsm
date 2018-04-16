@@ -1,5 +1,6 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = [{
         entry: './src/marty.ts',
@@ -35,6 +36,9 @@ module.exports = [{
                 flatten: true
             }], {
                 debug: true
+            }),
+            new UglifyJsPlugin({
+                test: /\.js($|\?)/i
             })
         ]
     },
