@@ -34,6 +34,9 @@
     },
     "files": [
         "dist/marty.js",
-        "dist/marty.ts"
+        "dist/marty.ts",
+        "example/example.js",
+        "example/index.html",
+        "example/stoplight.js"
     ]
 }
