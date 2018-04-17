@@ -39,5 +39,6 @@
         "dist/js/**/*",
         "dist/ts/**/*",
         "example/**/*"
-    ]
+    ],
+    "types": "./custom_typings/@martyhsm/marty/index.d.ts"
 }
