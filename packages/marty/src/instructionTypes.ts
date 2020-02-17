@@ -1,5 +1,4 @@
 /**
- *
  * Defines supported transition types.
  *
  * @enum {number}

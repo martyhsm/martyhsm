@@ -1,9 +1,10 @@
-import * as _ from 'lodash';
+import { Event } from './event';
 import { StateMachine } from './stateMachine';
 import { IEventHandler } from './eventHandler';
+import { Subject, Subscription } from 'rxjs';
+import { lowerCase, trim, uniq, findIndex, forEach, toLower } from 'lodash';
 
 /**
- *
  * Defines a state.
  *
  * @class State
@@ -11,7 +12,7 @@ import { IEventHandler } from './eventHandler';
  */
 class State implements IEventHandler {
   /**
-   *
+   * specifies name of state
    *
    * @type {string}
    * @memberOf State
@@ -19,7 +20,7 @@ class State implements IEventHandler {
   public name: string;
 
   /**
-   *
+   * indicates whether a transition is possible
    *
    * @type null
    * @memberOf State
@@ -27,7 +28,6 @@ class State implements IEventHandler {
   public canTransition: true;
 
   /**
-   *
    * Gets or sets parent state name.
    *
    * @type {string}
@@ -36,7 +36,6 @@ class State implements IEventHandler {
   public parentState: string = null;
 
   /**
-   *
    * Gets or set start state name.
    *
    * @type {string}
@@ -45,7 +44,6 @@ class State implements IEventHandler {
   public startState: string = null;
 
   /**
-   *
    * Gets or sets children.
    *
    * @type {Array<string>}
@@ -54,7 +52,6 @@ class State implements IEventHandler {
   public children: Array<string> = [];
 
   /**
-   *
    * Gets or sets siblings.
    *
    * @type {Array<string>}
@@ -63,7 +60,6 @@ class State implements IEventHandler {
   public siblings: Array<string> = [];
 
   /**
-   *
    * Gets or sets ancestors.
    *
    * @type {Array<string>}
@@ -72,8 +68,7 @@ class State implements IEventHandler {
   public ancestors: Array<string> = [];
 
   /**
-   *
-   * Gets or sets descendants.
+   * gets or sets descendants.
    *
    * @type {Array<string>}
    * @memberOf State
@@ -81,14 +76,30 @@ class State implements IEventHandler {
   public descendants: Array<string> = [];
 
   /**
-   *
-   * Stores state machine.
+   * stores state machine.
    *
    * @private
    * @type {StateMachine}
    * @memberOf State
    */
   private _stateMachine: StateMachine = null;
+
+  /**
+   * stores state machine.
+   *
+   * @private
+   * @type {Subject<Event>}
+   * @memberOf State
+   */
+  private _subject: Subject<Event> = null;
+
+  /**
+   * stores subscriptions
+   *
+   * @type {Subscription}
+   * @memberOf State
+   */
+  private _subscripitions: Subscription[] = [];
 
   /**
    * Creates an instance of State.
@@ -110,13 +121,12 @@ class State implements IEventHandler {
     if (startState && !startState.trim())
       throw 'A start state must have a valid name if specified.';
 
-    this.name = _.lowerCase(_.trim(name));
-    this.parentState = _.lowerCase(_.trim(parentState ? parentState : ''));
-    this.startState = _.lowerCase(_.trim(startState ? startState : ''));
+    this.name = lowerCase(trim(name));
+    this.parentState = lowerCase(trim(parentState ? parentState : ''));
+    this.startState = lowerCase(trim(startState ? startState : ''));
   }
 
   /**
-   *
    * Handles an event delegated by its state machine.
    *
    * @param {number} event Specifies an event ID.
@@ -130,7 +140,6 @@ class State implements IEventHandler {
   }
 
   /**
-   *
    * Adds 1 or more children.
    *
    * @param {...Array<string>} stateNames Specifies name of children.
@@ -138,19 +147,18 @@ class State implements IEventHandler {
    * @memberOf State
    */
   public addChildren(...stateNames: Array<string>): void {
-    _.forEach(stateNames, stateName => {
-      let s = _.trim(stateName);
+    forEach(stateNames, stateName => {
+      let s = trim(stateName);
 
       if (!s) throw 'You must add a valid string as a state name.';
 
-      this.children.push(_.toLower(s));
+      this.children.push(toLower(s));
 
-      this.children = _.uniq(this.children);
+      this.children = uniq(this.children);
     });
   }
 
   /**
-   *
    * Emits an event.
    *
    * @protected
@@ -164,7 +172,6 @@ class State implements IEventHandler {
   }
 
   /**
-   *
    * Transitions states.
    *
    * @protected
@@ -177,7 +184,6 @@ class State implements IEventHandler {
   }
 
   /**
-   *
    * Determines if a state is equal.
    *
    * @param {(State | string)} state Specifies either state or state name.
@@ -194,13 +200,12 @@ class State implements IEventHandler {
       name = state;
     }
 
-    name = _.lowerCase(_.trim(name ? name : ''));
+    name = lowerCase(trim(name ? name : ''));
 
     return this.name === name;
   }
 
   /**
-   *
    * Determines if a state has children.
    *
    * @param {State} state Specifies state name being tested.
@@ -213,7 +218,6 @@ class State implements IEventHandler {
   }
 
   /**
-   *
    * Determines if a state is the parent state.
    *
    * @param {State} state Specifies state name being tested.
@@ -226,7 +230,6 @@ class State implements IEventHandler {
   }
 
   /**
-   *
    * Determines if a state is an ancestor.
    *
    * @param {State} state Specifies state name being tested.
@@ -235,13 +238,10 @@ class State implements IEventHandler {
    * @memberOf State
    */
   public isAncestor(state: State): boolean {
-    return (
-      _.findIndex(this.ancestors, ancestor => ancestor === state.name) > -1
-    );
+    return findIndex(this.ancestors, ancestor => ancestor === state.name) > -1;
   }
 
   /**
-   *
    * Determines if a state is a child.
    *
    * @param {State} state Specifies state name being tested.
@@ -250,11 +250,10 @@ class State implements IEventHandler {
    * @memberOf State
    */
   public isChild(state: State): boolean {
-    return _.findIndex(this.children, child => child === state.name) > -1;
+    return findIndex(this.children, child => child === state.name) > -1;
   }
 
   /**
-   *
    * Determines if a state is a sibling.
    *
    * @param {State} state Specifies state name being tested.
@@ -263,11 +262,10 @@ class State implements IEventHandler {
    * @memberOf State
    */
   public isSibling(state: State): boolean {
-    return _.findIndex(this.siblings, sibling => sibling === state.name) > -1;
+    return findIndex(this.siblings, sibling => sibling === state.name) > -1;
   }
 
   /**
-   *
    * Determines if a state is a descendant.
    *
    * @param {State} state
@@ -277,24 +275,54 @@ class State implements IEventHandler {
    */
   public isDescendant(state: State): boolean {
     return (
-      _.findIndex(this.descendants, descendant => descendant === state.name) >
-      -1
+      findIndex(this.descendants, descendant => descendant === state.name) > -1
     );
   }
 
   /**
-   *
    * Associates a state machine with a state
    * NOTE: This method should never be called by user; it is used internally.
    *
    * @param {StateMachine} stateMachine Specifies state machine.
-   *
    * @memberOf State
    */
   public setStateMachine(stateMachine: StateMachine) {
     if (!stateMachine) throw 'State machine is invalid.';
 
     this._stateMachine = stateMachine;
+  }
+
+  /**
+   * sets subject
+   *
+   * @param subject subject of state machine
+   * @memberOf State
+   */
+  public setSubject(subject: Subject<Event>) {
+    this._subject = subject;
+  }
+
+  /**
+   * activates state
+   *
+   * @memberOf State
+   */
+  public activate() {
+    this._subscripitions.push(
+      this._subject.subscribe(event => {
+        console.log(event);
+        //this.handle(event.id, event.payload);
+      })
+    );
+  }
+
+  /**
+   * deactivates state
+   *
+   * @memberOf State
+   */
+  public deactivate() {
+    this._subscripitions.forEach(subscription => subscription.unsubscribe());
   }
 }
 

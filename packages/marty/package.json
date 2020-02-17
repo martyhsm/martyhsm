@@ -21,8 +21,8 @@
     "test": "jest",
     "docs": "typedoc --out docs src",
     "example": "ts-node example/example.ts",
-    "commit": "git add . && npx git-cz",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"libs/**/*.ts\""
+    "commit": "yarn format && git add . && npx git-cz",
+    "format": "prettier --write \"src/**/*.ts\" \"__tests__/**/*.ts\" \"example/**/*.ts\" \"index.ts\""
   },
   "dependencies": {
     "lodash": "^4.17.15"

@@ -1,7 +1,6 @@
 import { InstructionTypes } from './instructionTypes';
 
 /**
- *
  * Defines an instruction.
  *
  * @abstract

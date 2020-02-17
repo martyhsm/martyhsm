@@ -1,10 +1,20 @@
-import * as _ from 'lodash';
+import {
+  forEach,
+  lowerCase,
+  trim,
+  uniq,
+  union,
+  sortBy,
+  without,
+  indexOf
+} from 'lodash';
 import { State } from './state';
 import { Instruction } from './instruction';
 import { TOP_STATE_NAME, EXIT, ENTER } from './constants';
 import { Transition } from './transition';
 import { Event } from './event';
 import { InstructionTypes } from './instructionTypes';
+import { Subject } from 'rxjs';
 
 /**
  *
@@ -12,7 +22,6 @@ import { InstructionTypes } from './instructionTypes';
  *
  * @abstract
  * @class StateMachine
- * @implements {IEventHandler}
  */
 abstract class StateMachine {
   /**
@@ -88,7 +97,7 @@ abstract class StateMachine {
    * @type {boolean}
    * @memberOf StateMachine
    */
-  private _isInitialized: boolean = false;
+  private _initialized: boolean = false;
 
   /**
    * Inidicates whether a state machine is processing an instruction.
@@ -107,6 +116,15 @@ abstract class StateMachine {
    * @memberOf StateMachine
    */
   private _isResetting: boolean = false;
+
+  /**
+   * emits events for state machine
+   *
+   * @private
+   * @type {Subject<Event>}
+   * @memberOf StateMachine
+   */
+  private _subject: Subject<Event> = new Subject<Event>();
 
   /**
    * Creates an instance of StateMachine.
@@ -137,7 +155,7 @@ abstract class StateMachine {
     }
 
     if (topStartState) {
-      topStartState = _.lowerCase(_.trim(topStartState ? topStartState : ''));
+      topStartState = lowerCase(trim(topStartState ? topStartState : ''));
 
       if (!topStartState)
         throw 'A valid top start state must be provided if specified.';
@@ -157,13 +175,15 @@ abstract class StateMachine {
    * @memberOf StateMachine
    */
   protected registerStates(...states: Array<State>): void {
-    if (this._isInitialized)
+    if (this._initialized)
       throw 'States cannot be added after the state machine has been initialized.';
 
-    _.forEach(states, state => {
+    forEach(states, state => {
       if (!state) throw 'A state cannot be null or undefined';
       if (this._states[state.name])
         throw `State ${state.name} cannot be registered multiple times.`;
+
+      state.setSubject(this._subject);
 
       this._states[state.name] = state;
     });
@@ -178,10 +198,10 @@ abstract class StateMachine {
    * @memberOf StateMachine
    */
   protected registerEvents(...events: Array<number>): void {
-    if (this._isInitialized)
+    if (this._initialized)
       throw 'Events cannot be added after the state machine has been initialized.';
 
-    _.forEach(events, event => {
+    forEach(events, event => {
       this._events.push(event);
     });
   }
@@ -195,12 +215,12 @@ abstract class StateMachine {
    * @memberOf StateMachine
    */
   protected registerStateMachines(...stateMachines: Array<StateMachine>): void {
-    if (this._isInitialized)
+    if (this._initialized)
       throw 'Parallel state machines cannot be added after the state machine has been initial' +
         'ized.';
 
-    _.forEach(stateMachines, stateMachine => {
-      if (stateMachine._isInitialized)
+    forEach(stateMachines, stateMachine => {
+      if (stateMachine.isInitialized())
         throw 'Parallel state machines must be registered uninitialized.';
 
       if (stateMachine) this._stateMachines.push(stateMachine);
@@ -213,10 +233,10 @@ abstract class StateMachine {
    * @memberOf StateMachine
    */
   public initialize(): void {
-    if (this._isInitialized === true)
+    if (this._initialized === true)
       throw 'A state machine cannot be initalized twice.';
 
-    _.forEach(this._states, state => {
+    forEach(this._states, state => {
       if (state.name != TOP_STATE_NAME && !state.parentState) {
         state.parentState = TOP_STATE_NAME;
 
@@ -225,9 +245,9 @@ abstract class StateMachine {
     });
 
     let i: number = EXIT;
-    for (let event of _.sortBy(this._events)) {
+    for (let event of sortBy(this._events)) {
       if (event < 0 && !Event.isInfrastructureEvent(event))
-        throw 'Event IDs cannot be negative nor duplicate. Negative evenet IDs are reserved for' +
+        throw 'Event IDs cannot be negative nor duplicate. Negative event IDs are reserved for' +
           ' infrastructure events (i.e. EXIT, ENTRY, etc.)';
       if (i != event)
         throw 'Events must be registered in chronological order start at 0;';
@@ -235,7 +255,7 @@ abstract class StateMachine {
       i++;
     }
 
-    _.forEach(this._states, state => {
+    forEach(this._states, state => {
       let parentState: State = this._states[state.parentState];
 
       if (!parentState && state.name != TOP_STATE_NAME)
@@ -243,27 +263,27 @@ abstract class StateMachine {
 
       // Add children.
 
-      _.forEach(this._states, s => {
+      forEach(this._states, s => {
         if (s.isParent(state)) {
           state.addChildren(s.name);
         }
       });
     });
 
-    _.forEach(this._states, state => {
+    forEach(this._states, state => {
       if (state.parentState) {
         let parentState: State = this._states[state.parentState];
 
         if (!state.equals(TOP_STATE_NAME)) {
           // Add siblings.
-          state.siblings = _.uniq(_.without(parentState.children, state.name));
+          state.siblings = uniq(without(parentState.children, state.name));
 
           // Add ancestors and descendants.
           let parent: State = this._states[parentState.name];
           while (parent) {
             state.ancestors.push(parent.name);
-            parent.descendants = _.uniq(
-              _.union(parent.descendants, parent.children, state.children)
+            parent.descendants = uniq(
+              union(parent.descendants, parent.children, state.children)
             );
             parent = this._states[parent.parentState];
           }
@@ -271,7 +291,7 @@ abstract class StateMachine {
       }
     });
 
-    _.forEach(this._states, state => {
+    forEach(this._states, state => {
       // Check start states.
 
       let startState: State = this._states[state.startState];
@@ -282,7 +302,7 @@ abstract class StateMachine {
       }
 
       // Check child states.
-      _.forEach(state.children, c => {
+      forEach(state.children, c => {
         let child: State = this._states[c];
 
         if (!child)
@@ -294,23 +314,23 @@ abstract class StateMachine {
       state.canTransition = true;
     });
 
-    _.forEach(this._stateMachines, stateMachine => {
-      _.forEach(this._events, event => {
+    forEach(this._stateMachines, stateMachine => {
+      forEach(this._events, event => {
         stateMachine.registerEvents(event);
       });
 
       stateMachine.initialize();
     });
 
-    this._currentState = this._topState;
+    this.setCurrentState(this._topState);
 
-    this._currentState.handle(ENTER);
+    this._subject.next(new Event(ENTER));
 
     let start: State = this._states[this._currentState.startState];
 
-    this._isInitialized = true;
+    this._initialized = true;
 
-    _.forEach(this._states, state => {
+    forEach(this._states, state => {
       state.setStateMachine(this);
     });
 
@@ -322,6 +342,10 @@ abstract class StateMachine {
     }
   }
 
+  public isInitialized(): boolean {
+    return this._initialized;
+  }
+
   /**
    *
    * Resets state machine to initial state
@@ -329,7 +353,7 @@ abstract class StateMachine {
    * @memberOf StateMachine
    */
   public reset(): void {
-    if (!this._isInitialized)
+    if (!this._initialized)
       throw "A state machine cannot be reset if it hasn't been initialized.";
     if (this._isResetting) throw 'This state machine is already resetting.';
 
@@ -337,13 +361,14 @@ abstract class StateMachine {
 
     this._isResetting = true;
     this._instructionQueue = [];
-    this._currentState = this._topState;
 
-    _.forEach(this._states, state => {
+    this.setCurrentState(this._topState);
+
+    forEach(this._states, state => {
       state.canTransition = true;
     });
 
-    _.forEach(this._stateMachines, stateMachine => {
+    forEach(this._stateMachines, stateMachine => {
       stateMachine.reset();
     });
 
@@ -370,11 +395,11 @@ abstract class StateMachine {
    * @memberOf StateMachine
    */
   public handle(event: number, payload?: any): void {
-    if (!this._isInitialized)
+    if (!this._initialized)
       throw 'An event cannot be handled until the state machine is initialzed.';
     if (this._isResetting)
       throw 'An event cannot be handled while the state machine is being reset.';
-    if (_.indexOf(this._events, event) === -1)
+    if (indexOf(this._events, event) === -1)
       throw `Event ${event} is not registered.`;
 
     if (this._isBusy) {
@@ -386,6 +411,8 @@ abstract class StateMachine {
     this.setBusy(true);
 
     let state: State = this._currentState;
+
+    this._subject.next(new Event(event, payload));
 
     while (
       state &&
@@ -412,7 +439,7 @@ abstract class StateMachine {
    * @memberOf StateMachine
    */
   public transition(to: string): void {
-    let destination: State = this._states[_.lowerCase(to)];
+    let destination: State = this._states[lowerCase(to)];
 
     if (!destination) throw 'State is not registered.';
     if (!this._currentState.canTransition)
@@ -470,7 +497,7 @@ abstract class StateMachine {
             {
               let ins: Transition = <Transition>instruction;
 
-              this.doTransition(this._states[_.lowerCase(ins.state)]);
+              this.doTransition(this._states[lowerCase(ins.state)]);
             }
             break;
 
@@ -484,9 +511,17 @@ abstract class StateMachine {
 
     this._isBusy = isBusy;
 
-    _.forEach(this._states, state => {
+    forEach(this._states, state => {
       state.canTransition = true;
     });
+  }
+
+  private setCurrentState(state: State): void {
+    if (this._currentState) {
+      this._currentState.deactivate();
+    }
+    this._currentState = state;
+    this._currentState.activate();
   }
 
   /**
@@ -523,7 +558,7 @@ abstract class StateMachine {
       next.handle(ENTER);
     }
 
-    this._currentState = next;
+    this.setCurrentState(next);
   }
 
   /**
