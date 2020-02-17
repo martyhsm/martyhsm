@@ -1,5 +1,6 @@
 import { Instruction } from './instruction';
 import { InstructionTypes } from './instructionTypes';
+import { trim } from 'lodash';
 
 /**
  *
@@ -18,6 +19,12 @@ class Transition extends Instruction {
    */
   constructor(public state: string) {
     super(InstructionTypes.Transition);
+
+    if (!this.state || !trim(this.state)) {
+      throw new Error(
+        'A transition requires a valid state name to be specified.'
+      );
+    }
   }
 }
 

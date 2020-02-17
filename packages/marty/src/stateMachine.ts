@@ -79,7 +79,7 @@ abstract class StateMachine {
    * @type {Array<number>}
    * @memberOf StateMachine
    */
-  private _events: Array<number> = [EXIT, ENTER];
+  private _events: Array<number | string> = Event.getInfrastructureEvents();
 
   /**
    * Stores registered parallel state machines.
@@ -197,11 +197,19 @@ abstract class StateMachine {
    *
    * @memberOf StateMachine
    */
-  protected registerEvents(...events: Array<number>): void {
+  protected registerEvents(...events: Array<number | string>): void {
     if (this._initialized)
-      throw 'Events cannot be added after the state machine has been initialized.';
+      throw new Error(
+        'Events cannot be added after the state machine has been initialized.'
+      );
 
     forEach(events, event => {
+      if (Event.isInfrastructureEvent(event)) {
+        throw new Error(
+          `Cannot register an event similar to infrastructure events: ${Event.getInfrastructureEvents()}.`
+        );
+      }
+
       this._events.push(event);
     });
   }
@@ -223,6 +231,7 @@ abstract class StateMachine {
       if (stateMachine.isInitialized())
         throw 'Parallel state machines must be registered uninitialized.';
 
+      stateMachine.setSubject(this._subject);
       if (stateMachine) this._stateMachines.push(stateMachine);
     });
   }
@@ -244,22 +253,16 @@ abstract class StateMachine {
       }
     });
 
-    let i: number = EXIT;
-    for (let event of sortBy(this._events)) {
-      if (event < 0 && !Event.isInfrastructureEvent(event))
-        throw 'Event IDs cannot be negative nor duplicate. Negative event IDs are reserved for' +
-          ' infrastructure events (i.e. EXIT, ENTRY, etc.)';
-      if (i != event)
-        throw 'Events must be registered in chronological order start at 0;';
-
-      i++;
+    const uniqueEvents = uniq(this._events);
+    if (uniqueEvents.length < this._events.length) {
+      throw new Error('Duplicate events cannot be registered.');
     }
 
     forEach(this._states, state => {
       let parentState: State = this._states[state.parentState];
 
       if (!parentState && state.name != TOP_STATE_NAME)
-        throw `The parent state of ${state.name} is not registered.`;
+        throw new Error(`The parent state of ${state.name} is not registered.`);
 
       // Add children.
 
@@ -389,12 +392,12 @@ abstract class StateMachine {
    *
    * Handles registered events.
    *
-   * @param {number} event Specifies the ID of the event to handle
+   * @param {number | string} event Specifies the ID of the event to handle
    * @param {*} [payload] Specifies data that can optionally be sent along with a request
    *
    * @memberOf StateMachine
    */
-  public handle(event: number, payload?: any): void {
+  public handle(event: number | string, payload?: any): void {
     if (!this._initialized)
       throw 'An event cannot be handled until the state machine is initialzed.';
     if (this._isResetting)
@@ -420,10 +423,6 @@ abstract class StateMachine {
       !Event.isInfrastructureEvent(event)
     ) {
       state = this._states[state.parentState];
-    }
-
-    for (let i: number = 0; i < this._stateMachines.length; i++) {
-      this._stateMachines[i].handle(event, payload);
     }
 
     this.setBusy(false);
@@ -513,6 +512,19 @@ abstract class StateMachine {
 
     forEach(this._states, state => {
       state.canTransition = true;
+    });
+  }
+
+  /**
+   * sets subject
+   *
+   * @param subject specifies subject
+   */
+  public setSubject(subject: Subject<Event>): void {
+    this._subject = subject || new Subject<Event>();
+
+    this._subject.subscribe(event => {
+      this.handle(event.id, event.payload);
     });
   }
 

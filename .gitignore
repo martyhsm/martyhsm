@@ -3,3 +3,4 @@ packages/*/lib
 .idea
 *-debug.log
 *-error.log
+coverage

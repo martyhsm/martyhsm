@@ -1,6 +1,7 @@
 import { Instruction } from './instruction';
 import { ENTER, EXIT } from './constants';
 import { InstructionTypes } from './instructionTypes';
+import { trim } from 'lodash';
 
 /**
  *
@@ -13,13 +14,21 @@ export class Event extends Instruction {
   /**
    * Creates an instance of Event.
    *
-   * @param {number} id
+   * @param {number | string} id
    * @param {*} [payload]
    *
    * @memberOf Event
    */
-  constructor(public id: number, public payload?: any) {
+  constructor(public id: number | string, public payload?: any) {
     super(InstructionTypes.Event);
+
+    if (!id) {
+      throw new Error(`Event ID ${id} is invalid.`);
+    }
+
+    if (typeof id === 'string' && !trim(id)) {
+      throw new Error(`Event ID ${id} is invalid.`);
+    }
   }
 
   /**
@@ -32,7 +41,11 @@ export class Event extends Instruction {
    *
    * @memberOf Event
    */
-  static isInfrastructureEvent(id: number) {
-    return id === ENTER || id === EXIT;
+  static isInfrastructureEvent(id: number | string) {
+    return id == ENTER || id == EXIT;
+  }
+
+  static getInfrastructureEvents(): Array<string | number> {
+    return [ENTER, EXIT];
   }
 }

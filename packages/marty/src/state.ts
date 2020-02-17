@@ -135,7 +135,7 @@ class State implements IEventHandler {
    *
    * @memberOf State
    */
-  public handle(event: number, payload?: any): boolean {
+  public handle(event: number | string, payload?: any): boolean {
     return false;
   }
 
