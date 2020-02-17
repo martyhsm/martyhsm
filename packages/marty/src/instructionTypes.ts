@@ -5,8 +5,8 @@
  * @enum {number}
  */
 enum InstructionTypes {
-    Event,
-    Transition
+  Event,
+  Transition
 }
 
-export { InstructionTypes }
+export { InstructionTypes };

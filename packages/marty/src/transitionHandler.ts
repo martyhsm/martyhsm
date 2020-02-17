@@ -7,7 +7,7 @@
  * @interface ITransitionHandler
  */
 interface ITransitionHandler {
-    (to : string) : void;
+  (to: string): void;
 }
 
-export { ITransitionHandler }
+export { ITransitionHandler };
