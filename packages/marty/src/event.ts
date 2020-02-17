@@ -32,7 +32,7 @@ export class Event extends Instruction {
      *
      * @memberOf Event
      */
-    static isInfrastructureEvent(id : number) {
+    static isInfrastructureEvent(id: number) {
         return id === ENTER || id === EXIT;
     }
 }

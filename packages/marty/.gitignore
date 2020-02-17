@@ -1,9 +1,0 @@
-node_modules
-dist
-*.log
-
-example/**/*.js
-src/**/*.js
-spec/**/*.js
-
-*.map

@@ -1,16 +1,12 @@
 {
+    "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "outDir": "./dist/js",
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "module": "es6",
-        "target": "es5",
-        "allowJs": true
+        "outDir": "./lib"
     },
-    "include":[
-        "./src/**/*"
-    ],
-    "exclude": [
-        "node_modules"
+    "include": [
+        "./src/**/*",
+        "./__tests__",
+        "./example",
+        "index.ts"
     ]
 }

@@ -16,7 +16,6 @@ import {InstructionTypes} from "./instructionTypes";
  */
 abstract class StateMachine {
     /**
-     *
      * Stores queue capacity.
      * Defaults to 0.
      *
@@ -27,7 +26,6 @@ abstract class StateMachine {
     private _queueCapacity : number = 0;
 
     /**
-     *
      * Specifies instruction queue that is used for queuing instructions.
      *
      * @private
@@ -37,7 +35,6 @@ abstract class StateMachine {
     private _instructionQueue : Array < Instruction > = [];
 
     /**
-     *
      * Stores currenet state.
      *
      * @private
@@ -47,7 +44,6 @@ abstract class StateMachine {
     private _currentState : State = null;
 
     /**
-     *
      * Stores top state.
      *
      * @private
@@ -57,7 +53,6 @@ abstract class StateMachine {
     private _topState : State = new State(TOP_STATE_NAME);
 
     /**
-     *
      * Stores registered states.
      *
      * @private
@@ -69,7 +64,6 @@ abstract class StateMachine {
     } = {};
 
     /**
-     *
      * Stores registered events.
      *
      * @private
@@ -79,7 +73,6 @@ abstract class StateMachine {
     private _events : Array < number > = [EXIT, ENTER];
 
     /**
-     *
      * Stores registered parallel state machines.
      *
      * @private
@@ -89,7 +82,6 @@ abstract class StateMachine {
     private _stateMachines : Array < StateMachine > = [];
 
     /**
-     *
      * Indicates whether a state machine is initialized.
      *
      * @private
@@ -99,7 +91,6 @@ abstract class StateMachine {
     private _isInitialized : boolean = false;
 
     /**
-     *
      * Inidicates whether a state machine is processing an instruction.
      *
      * @private
@@ -109,7 +100,6 @@ abstract class StateMachine {
     private _isBusy : boolean = false;
 
     /**
-     *
      * Indicates whether a state machine is resetting.
      *
      * @private
@@ -159,7 +149,6 @@ abstract class StateMachine {
     }
 
     /**
-     *
      * Registers one or more states.
      *
      * @protected
@@ -224,7 +213,6 @@ abstract class StateMachine {
     }
 
     /**
-     *
      * Intializes a state machine.
      *
      * @memberOf StateMachine

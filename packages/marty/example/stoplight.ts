@@ -1,4 +1,4 @@
-import {State, StateMachine, ENTER, EXIT, TOP_STATE_NAME} from "../src/marty";
+import {State, StateMachine, ENTER, EXIT, TOP_STATE_NAME} from "../index";
 
 const TurnOn : number = 0;
 const TurnOff : number = 1;
@@ -233,30 +233,7 @@ class StoplightStateMachine extends StateMachine {
 }
 
 module Logger {
-
     export function log(message : string, isolate : Boolean = false) {
-        let br1 = document.createElement('br');
-        let br2 = document.createElement('br');
-        let elem = document.createElement('div');
-
-        elem.textContent = message;
-
-        if (isolate) {
-            document
-                .body
-                .appendChild(br1);
-        }
-
-        document
-            .body
-            .appendChild(elem);
-
-        if (isolate) {
-            document
-                .body
-                .appendChild(br2);
-        }
-
         console.log(message);
     }
 }
