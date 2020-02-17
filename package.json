@@ -5,8 +5,9 @@
     "bootstrap": "yarn && lerna bootstrap",
     "publish": "lerna run tsc && lerna publish",
     "test": "lerna run jest",
-    "commit": "yarn format && git add . && npx git-cz",
-    "format": "lerna run format"
+    "commit": "yarn docs && yarn format && git add . && npx git-cz",
+    "format": "lerna run format",
+    "docs": "lerna run docs"
   },
   "keywords": [
     "marty",

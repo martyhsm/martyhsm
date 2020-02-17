@@ -74,9 +74,6 @@
 					<dl class="tsd-comment-tags">
 						<dt>abstract</dt>
 						<dd></dd>
-						<dt>implements</dt>
-						<dd><p>{IEventHandler}</p>
-						</dd>
 					</dl>
 				</div>
 			</section>
@@ -85,11 +82,6 @@
 				<ul class="tsd-hierarchy">
 					<li>
 						<span class="target">StateMachine</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="stoplightstatemachine.html" class="tsd-signature-type">StoplightStateMachine</a>
-							</li>
-						</ul>
 					</li>
 				</ul>
 			</section>
@@ -108,13 +100,14 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#_currentstate" class="tsd-kind-icon">_current<wbr>State</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#_events" class="tsd-kind-icon">_events</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#_initialized" class="tsd-kind-icon">_initialized</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#_instructionqueue" class="tsd-kind-icon">_instruction<wbr>Queue</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#_isbusy" class="tsd-kind-icon">_is<wbr>Busy</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#_isinitialized" class="tsd-kind-icon">_is<wbr>Initialized</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#_isresetting" class="tsd-kind-icon">_is<wbr>Resetting</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#_queuecapacity" class="tsd-kind-icon">_queue<wbr>Capacity</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#_statemachines" class="tsd-kind-icon">_state<wbr>Machines</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#_states" class="tsd-kind-icon">_states</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#_subject" class="tsd-kind-icon">_subject</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#_topstate" class="tsd-kind-icon">_top<wbr>State</a></li>
 							</ul>
 						</section>
@@ -124,12 +117,14 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#dotransition" class="tsd-kind-icon">do<wbr>Transition</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="statemachine.html#handle" class="tsd-kind-icon">handle</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="statemachine.html#initialize" class="tsd-kind-icon">initialize</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="statemachine.html#isinitialized" class="tsd-kind-icon">is<wbr>Initialized</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#queueinstruction" class="tsd-kind-icon">queue<wbr>Instruction</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="statemachine.html#registerevents" class="tsd-kind-icon">register<wbr>Events</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="statemachine.html#registerstatemachines" class="tsd-kind-icon">register<wbr>State<wbr>Machines</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="statemachine.html#registerstates" class="tsd-kind-icon">register<wbr>States</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="statemachine.html#reset" class="tsd-kind-icon">reset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#setbusy" class="tsd-kind-icon">set<wbr>Busy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#setcurrentstate" class="tsd-kind-icon">set<wbr>Current<wbr>State</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="statemachine.html#transition" class="tsd-kind-icon">transition</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#transitiontoancestor" class="tsd-kind-icon">transition<wbr>ToAncestor</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="statemachine.html#transitiontochild" class="tsd-kind-icon">transition<wbr>ToChild</a></li>
@@ -154,7 +149,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:109</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L127">stateMachine.ts:127</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -192,7 +187,7 @@
 					<div class="tsd-signature tsd-kind-icon">_current<wbr>State<span class="tsd-signature-symbol">:</span> <a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> = null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/stateMachine.ts:44</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L53">stateMachine.ts:53</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -212,7 +207,7 @@
 					<div class="tsd-signature tsd-kind-icon">_events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = [EXIT, ENTER]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/stateMachine.ts:73</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L82">stateMachine.ts:82</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -227,12 +222,32 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_initialized" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _initialized</h3>
+					<div class="tsd-signature tsd-kind-icon">_initialized<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L100">stateMachine.ts:100</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Indicates whether a state machine is initialized.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>StateMachine</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_instructionqueue" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _instruction<wbr>Queue</h3>
 					<div class="tsd-signature tsd-kind-icon">_instruction<wbr>Queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="instruction.html" class="tsd-signature-type">Instruction</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/stateMachine.ts:35</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L44">stateMachine.ts:44</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -252,7 +267,7 @@
 					<div class="tsd-signature tsd-kind-icon">_is<wbr>Busy<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/stateMachine.ts:100</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L109">stateMachine.ts:109</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -267,32 +282,12 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_isinitialized" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _is<wbr>Initialized</h3>
-					<div class="tsd-signature tsd-kind-icon">_is<wbr>Initialized<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in src/stateMachine.ts:91</li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Indicates whether a state machine is initialized.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>memberof</dt>
-							<dd><p>StateMachine</p>
-							</dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_isresetting" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _is<wbr>Resetting</h3>
 					<div class="tsd-signature tsd-kind-icon">_is<wbr>Resetting<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/stateMachine.ts:109</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L118">stateMachine.ts:118</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -312,7 +307,7 @@
 					<div class="tsd-signature tsd-kind-icon">_queue<wbr>Capacity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/stateMachine.ts:26</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L35">stateMachine.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -333,7 +328,7 @@
 					<div class="tsd-signature tsd-kind-icon">_state<wbr>Machines<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="statemachine.html" class="tsd-signature-type">StateMachine</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/stateMachine.ts:82</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L91">stateMachine.ts:91</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -353,7 +348,7 @@
 					<div class="tsd-signature tsd-kind-icon">_states<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/stateMachine.ts:62</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L71">stateMachine.ts:71</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -376,12 +371,32 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_subject" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _subject</h3>
+					<div class="tsd-signature tsd-kind-icon">_subject<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Subject</span><span class="tsd-signature-symbol">&lt;</span><a href="event.html" class="tsd-signature-type">Event</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new Subject&lt;Event&gt;()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L127">stateMachine.ts:127</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>emits events for state machine</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>StateMachine</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_topstate" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _top<wbr>State</h3>
 					<div class="tsd-signature tsd-kind-icon">_top<wbr>State<span class="tsd-signature-symbol">:</span> <a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> = new State(TOP_STATE_NAME)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/stateMachine.ts:53</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L62">stateMachine.ts:62</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -408,7 +423,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:512</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L536">stateMachine.ts:536</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -444,7 +459,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:388</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L397">stateMachine.ts:397</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -483,7 +498,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:220</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L235">stateMachine.ts:235</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -500,6 +515,23 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="isinitialized" class="tsd-anchor"></a>
+					<h3>is<wbr>Initialized</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Initialized<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L345">stateMachine.ts:345</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="queueinstruction" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> queue<wbr>Instruction</h3>
@@ -510,7 +542,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:556</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L574">stateMachine.ts:574</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -546,7 +578,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:181</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L200">stateMachine.ts:200</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -582,7 +614,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:200</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L217">stateMachine.ts:217</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -617,7 +649,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:159</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L177">stateMachine.ts:177</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -653,7 +685,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:342</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L355">stateMachine.ts:355</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -680,7 +712,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:461</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L471">stateMachine.ts:471</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -706,6 +738,29 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="setcurrentstate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> set<wbr>Current<wbr>State</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Current<wbr>State<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L519">stateMachine.ts:519</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="state.html" class="tsd-signature-type">State</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="transition" class="tsd-anchor"></a>
 					<h3>transition</h3>
@@ -716,7 +771,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:428</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L441">stateMachine.ts:441</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -752,7 +807,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:617</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L635">stateMachine.ts:635</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -788,7 +843,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:605</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L623">stateMachine.ts:623</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -824,7 +879,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:638</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L657">stateMachine.ts:657</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -860,7 +915,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:663</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L682">stateMachine.ts:682</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -896,7 +951,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:577</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L595">stateMachine.ts:595</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -932,7 +987,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/stateMachine.ts:590</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/2c7dc44/packages/marty/src/stateMachine.ts#L608">stateMachine.ts:608</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -977,19 +1032,7 @@
 						<a href="event.html" class="tsd-kind-icon">Event</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="green.html" class="tsd-kind-icon">Green</a>
-					</li>
-					<li class=" tsd-kind-class">
 						<a href="instruction.html" class="tsd-kind-icon">Instruction</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="off.html" class="tsd-kind-icon">Off</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="on.html" class="tsd-kind-icon">On</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="red.html" class="tsd-kind-icon">Red</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="state.html" class="tsd-kind-icon">State</a>
@@ -1009,13 +1052,13 @@
 								<a href="statemachine.html#_events" class="tsd-kind-icon">_events</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="statemachine.html#_initialized" class="tsd-kind-icon">_initialized</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="statemachine.html#_instructionqueue" class="tsd-kind-icon">_instruction<wbr>Queue</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="statemachine.html#_isbusy" class="tsd-kind-icon">_is<wbr>Busy</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="statemachine.html#_isinitialized" class="tsd-kind-icon">_is<wbr>Initialized</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="statemachine.html#_isresetting" class="tsd-kind-icon">_is<wbr>Resetting</a>
@@ -1030,6 +1073,9 @@
 								<a href="statemachine.html#_states" class="tsd-kind-icon">_states</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="statemachine.html#_subject" class="tsd-kind-icon">_subject</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="statemachine.html#_topstate" class="tsd-kind-icon">_top<wbr>State</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
@@ -1040,6 +1086,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="statemachine.html#initialize" class="tsd-kind-icon">initialize</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="statemachine.html#isinitialized" class="tsd-kind-icon">is<wbr>Initialized</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="statemachine.html#queueinstruction" class="tsd-kind-icon">queue<wbr>Instruction</a>
@@ -1058,6 +1107,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="statemachine.html#setbusy" class="tsd-kind-icon">set<wbr>Busy</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="statemachine.html#setcurrentstate" class="tsd-kind-icon">set<wbr>Current<wbr>State</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="statemachine.html#transition" class="tsd-kind-icon">transition</a>
@@ -1085,25 +1137,13 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-class">
-						<a href="stoplightstatemachine.html" class="tsd-kind-icon">Stoplight<wbr>State<wbr>Machine</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="top.html" class="tsd-kind-icon">Top</a>
-					</li>
-					<li class=" tsd-kind-class">
 						<a href="transition.html" class="tsd-kind-icon">Transition</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="yellow.html" class="tsd-kind-icon">Yellow</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/ieventhandler.html" class="tsd-kind-icon">IEvent<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/itransitionhandler.html" class="tsd-kind-icon">ITransition<wbr>Handler</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#crash" class="tsd-kind-icon">Crash</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="../globals.html#enter" class="tsd-kind-icon">ENTER</a>
@@ -1113,24 +1153,6 @@
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="../globals.html#top_state_name" class="tsd-kind-icon">TOP_<wbr>STATE_<wbr>NAME</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#turngreen" class="tsd-kind-icon">Turn<wbr>Green</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#turnoff" class="tsd-kind-icon">Turn<wbr>Off</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#turnon" class="tsd-kind-icon">Turn<wbr>On</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#turnred" class="tsd-kind-icon">Turn<wbr>Red</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#turnyellow" class="tsd-kind-icon">Turn<wbr>Yellow</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#testobject" class="tsd-kind-icon">test<wbr>Object</a>
 					</li>
 				</ul>
 			</nav>
