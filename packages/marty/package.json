@@ -20,7 +20,8 @@
     "tsc": "tsc",
     "test": "jest",
     "docs": "typedoc --out docs src",
-    "example": "ts-node example/example.ts"
+    "example": "ts-node example/example.ts",
+    "commit": "git add . && npx git-cz"
   },
   "dependencies": {
     "lodash": "^4.17.15"

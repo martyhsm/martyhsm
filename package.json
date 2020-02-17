@@ -4,27 +4,29 @@
   "scripts": {
     "bootstrap": "yarn && lerna bootstrap",
     "publish": "lerna run tsc && lerna publish",
-    "test": "lerna run jest"
+    "test": "lerna run jest",
+    "commit": "git add . && npx git-cz"
   },
   "keywords": [
-      "marty",
-      "hsm",
-      "hierarchical",
-      "state",
-      "machine",
-      "statechart",
-      "instruction",
-      "UML"
+    "marty",
+    "hsm",
+    "hierarchical",
+    "state",
+    "machine",
+    "statechart",
+    "instruction",
+    "UML"
   ],
   "author": "Brandon Phillips <brandon.phillips@live.com>",
   "contributors": [
-      "Brandon Phillips <brandon.phillips@live.com>"
+    "Brandon Phillips <brandon.phillips@live.com>"
   ],
   "license": "BSD-3-Clause",
   "description": "This is an implementation of a hierarchical state machine (HSM) or a statechart with a few new features like:\r - instruction queuing\r - event payloads\r - \"parallel\" state machines",
   "main": "lib/index.js",
   "devDependencies": {
     "@types/node": "^13.7.1",
+    "cz-conventional-changelog": "3.1.0",
     "lerna": "^3.20.2",
     "typescript": "^3.7.5"
   },
@@ -38,5 +40,10 @@
   "bugs": {
     "url": "https://github.com/martyhsm/martyhsm/issues"
   },
-  "homepage": "https://github.com/martyhsm/martyhsm/tree/master/packages/marty#readme"
+  "homepage": "https://github.com/martyhsm/martyhsm/tree/master/packages/marty#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
