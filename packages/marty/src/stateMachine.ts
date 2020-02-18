@@ -4,7 +4,6 @@ import {
   trim,
   uniq,
   union,
-  sortBy,
   without,
   indexOf
 } from 'lodash';
@@ -549,7 +548,7 @@ abstract class StateMachine {
     if (this._currentState.equals(destination)) {
       throw 'A state cannot transition to itself.';
     } else if (this._currentState.isParent(destination)) {
-      this.transitionToParent(destination);
+      this.transitionToParent();
     } else if (this._currentState.isSibling(destination)) {
       this.transitionToSibling(destination);
     } else if (this._currentState.isChild(destination)) {
@@ -604,7 +603,7 @@ abstract class StateMachine {
    *
    * @memberOf StateMachine
    */
-  private transitionToParent(to: State): void {
+  private transitionToParent(): void {
     this._currentState.handle(EXIT);
   }
 

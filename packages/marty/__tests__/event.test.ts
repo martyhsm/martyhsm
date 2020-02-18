@@ -1,8 +1,8 @@
 import { Event } from '../src/event';
 import { Instruction } from '../src/instruction';
 import { ENTER, EXIT } from '../src/constants';
-import { isEqual } from 'lodash';
 import { InstructionTypes } from '../src/instructionTypes';
+import { isEqual } from 'lodash';
 
 describe('Event', () => {
   let event: Event = new Event(1);
@@ -58,14 +58,11 @@ describe('Event', () => {
     expect(isEqual(event.payload, {})).toBeTruthy();
   });
 
-  it('should not be an infrastructure event.', () => {
-    expect(Event.isInfrastructureEvent(event.id)).toBeFalsy();
-  });
-
   describe('can determine if an event is an infrastructure event.', () => {
     it('isInfrastructureEvent()', () => {
       expect(Event.isInfrastructureEvent(ENTER)).toBeTruthy();
       expect(Event.isInfrastructureEvent(EXIT)).toBeTruthy();
+
       expect(Event.isInfrastructureEvent(Number.MIN_SAFE_INTEGER)).toBeFalsy();
     });
   });
