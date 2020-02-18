@@ -22,11 +22,11 @@ export class Event extends Instruction {
   constructor(public id: number | string, public payload?: any) {
     super(InstructionTypes.Event);
 
-    if (!id) {
-      throw new Error(`Event ID ${id} is invalid.`);
-    }
-
-    if (typeof id === 'string' && !trim(id)) {
+    if (
+      id === null ||
+      id === undefined ||
+      (typeof id === 'string' && !trim(id))
+    ) {
       throw new Error(`Event ID ${id} is invalid.`);
     }
   }
