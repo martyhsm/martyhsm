@@ -3,6 +3,7 @@ import { StateMachine } from './stateMachine';
 import { IEventHandler } from './eventHandler';
 import { Subject, Subscription } from 'rxjs';
 import { lowerCase, trim, uniq, findIndex, forEach, toLower } from 'lodash';
+import { appendFileSync } from 'fs';
 
 /**
  * Defines a state.
@@ -25,7 +26,7 @@ class State implements IEventHandler {
    * @type null
    * @memberOf State
    */
-  public canTransition: true;
+  public canTransition: boolean = false;
 
   /**
    * Gets or sets parent state name.
@@ -49,7 +50,7 @@ class State implements IEventHandler {
    * @type {Array<string>}
    * @memberOf State
    */
-  public children: Array<string> = [];
+  private _children: string[] = [];
 
   /**
    * Gets or sets siblings.
@@ -57,7 +58,7 @@ class State implements IEventHandler {
    * @type {Array<string>}
    * @memberOf State
    */
-  public siblings: Array<string> = [];
+  private _siblings: string[] = [];
 
   /**
    * Gets or sets ancestors.
@@ -65,7 +66,7 @@ class State implements IEventHandler {
    * @type {Array<string>}
    * @memberOf State
    */
-  public ancestors: Array<string> = [];
+  private _ancestors: string[] = [];
 
   /**
    * gets or sets descendants.
@@ -73,7 +74,7 @@ class State implements IEventHandler {
    * @type {Array<string>}
    * @memberOf State
    */
-  public descendants: Array<string> = [];
+  private _descendants: string[] = [];
 
   /**
    * stores state machine.
@@ -83,23 +84,6 @@ class State implements IEventHandler {
    * @memberOf State
    */
   private _stateMachine: StateMachine = null;
-
-  /**
-   * stores state machine.
-   *
-   * @private
-   * @type {Subject<Event>}
-   * @memberOf State
-   */
-  private _subject: Subject<Event> = null;
-
-  /**
-   * stores subscriptions
-   *
-   * @type {Subscription}
-   * @memberOf State
-   */
-  private _subscripitions: Subscription[] = [];
 
   /**
    * Creates an instance of State.
@@ -112,18 +96,32 @@ class State implements IEventHandler {
    */
   public constructor(
     name: string,
-    parentState: string = null,
-    startState: string = null
+    parentState: string | State = null,
+    startState: string | State = null
   ) {
-    if (!name || !name.trim()) throw 'A state must have a valid name.';
-    if (parentState && !parentState.trim())
-      throw 'A parent state must have a valid name if specified.';
-    if (startState && !startState.trim())
-      throw 'A start state must have a valid name if specified.';
+    if (!name || !trim(name))
+      throw new Error('A state must have a valid name.');
+    if (
+      parentState &&
+      !trim(parentState instanceof State ? parentState.name : parentState)
+    )
+      throw new Error('A parent state must have a valid name if specified.');
+    if (
+      startState &&
+      !trim(startState instanceof State ? startState.name : startState)
+    )
+      throw new Error('A start state must have a valid name if specified.');
 
     this.name = lowerCase(trim(name));
-    this.parentState = lowerCase(trim(parentState ? parentState : ''));
-    this.startState = lowerCase(trim(startState ? startState : ''));
+
+    if (parentState)
+      this.parentState = lowerCase(
+        trim(parentState instanceof State ? parentState.name : parentState)
+      );
+    if (startState)
+      this.startState = lowerCase(
+        trim(startState instanceof State ? startState.name : startState)
+      );
   }
 
   /**
@@ -146,16 +144,195 @@ class State implements IEventHandler {
    *
    * @memberOf State
    */
-  public addChildren(...stateNames: Array<string>): void {
-    forEach(stateNames, stateName => {
-      let s = trim(stateName);
+  public addChildren(...states: Array<string | State>): void {
+    forEach(states, state => {
+      let name = trim(state instanceof State ? state.name : state);
 
-      if (!s) throw 'You must add a valid string as a state name.';
+      if (!name) throw 'You must add a valid string as a state name.';
 
-      this.children.push(toLower(s));
-
-      this.children = uniq(this.children);
+      this._children.push(toLower(name));
+      this._children = uniq(this._children);
     });
+  }
+
+  public getChildren(): string[] {
+    return this._children;
+  }
+
+  public addAncestors(...states: Array<State | string>): void {
+    forEach(states, state => {
+      const name = state instanceof State ? state.name : state;
+
+      if (!state) throw 'State must be defined.';
+
+      this._ancestors.push(toLower(name));
+      this._ancestors = uniq(this._ancestors);
+    });
+  }
+
+  public getAncestors(): string[] {
+    return this._ancestors;
+  }
+
+  public addDescendants(...states: Array<State | string>): void {
+    forEach(states, state => {
+      const name = state instanceof State ? state.name : state;
+
+      if (!state) throw 'State must be defined.';
+
+      this._descendants.push(toLower(name));
+      this._descendants = uniq(this._descendants);
+    });
+  }
+
+  public getDescendants(): string[] {
+    return this._descendants;
+  }
+
+  public addSiblings(...states: Array<State | string>): void {
+    forEach(states, state => {
+      const name = state instanceof State ? state.name : state;
+
+      if (!state) throw 'State must be defined.';
+
+      this._siblings.push(toLower(name));
+      this._siblings = uniq(this._siblings);
+    });
+  }
+
+  public getSiblings(): string[] {
+    return this._siblings;
+  }
+
+  /**
+   * Determines if a state is equal.
+   *
+   * @param {(State | string)} state Specifies either state or state name.
+   * @returns {boolean} Indicates whether state met criteria.
+   *
+   * @memberOf State
+   */
+  public equals(state: State | string): boolean {
+    let name: string = null;
+
+    if (state instanceof State) {
+      name = state.name;
+    } else {
+      name = state;
+    }
+
+    name = lowerCase(trim(name ? name : ''));
+
+    if (!name) throw new Error('An invalid state was passed.');
+
+    return this.name === name;
+  }
+
+  /**
+   * Determines if a state has children.
+   *
+   * @param {State} state Specifies state name being tested.
+   * @returns {boolean} Indicates whether state met criteria.
+   *
+   * @memberOf State
+   */
+  public hasChildren(): boolean {
+    return this._children.length > 0;
+  }
+
+  /**
+   * Determines if a state is the parent state.
+   *
+   * @param {State} state Specifies state name being tested.
+   * @returns {boolean} Indicates whether state met criteria.
+   *
+   * @memberOf State
+   */
+  public isParent(state: State | string): boolean {
+    return this.parentState === (state instanceof State ? state.name : state);
+  }
+
+  /**
+   * Determines if a state is an ancestor.
+   *
+   * @param {State} state Specifies state name being tested.
+   * @returns {boolean} Indicates whether state met criteria.
+   *
+   * @memberOf State
+   */
+  public isAncestor(state: State | string): boolean {
+    return (
+      findIndex(
+        this._ancestors,
+        ancestor => ancestor === (state instanceof State ? state.name : state)
+      ) > -1
+    );
+  }
+
+  /**
+   * Determines if a state is a child.
+   *
+   * @param {State} state Specifies state name being tested.
+   * @returns {boolean} Indicates whether state met criteria.
+   *
+   * @memberOf State
+   */
+  public isChild(state: State | string): boolean {
+    return (
+      findIndex(
+        this._children,
+        child => child === (state instanceof State ? state.name : state)
+      ) > -1
+    );
+  }
+
+  /**
+   * Determines if a state is a sibling.
+   *
+   * @param {State} state Specifies state name being tested.
+   * @returns {boolean} Indicates whether state met criteria.
+   *
+   * @memberOf State
+   */
+  public isSibling(state: State | string): boolean {
+    return (
+      findIndex(
+        this._siblings,
+        sibling => sibling === (state instanceof State ? state.name : state)
+      ) > -1
+    );
+  }
+
+  /**
+   * Determines if a state is a descendant.
+   *
+   * @param {State} state
+   * @returns {boolean}
+   *
+   * @memberOf State
+   */
+  public isDescendant(state: State | string): boolean {
+    return (
+      findIndex(
+        this._descendants,
+        descendant =>
+          descendant === (state instanceof State ? state.name : state)
+      ) > -1
+    );
+  }
+
+  /**
+   * Associates a state machine with a state
+   * NOTE: This method should never be called by user; it is used internally.
+   *
+   * @param {StateMachine} stateMachine Specifies state machine.
+   * @memberOf State
+   */
+  public setStateMachine(stateMachine: StateMachine) {
+    if (!stateMachine) throw new Error('State machine is invalid.');
+    if (this._stateMachine) throw new Error('State machine is already set.');
+
+    this._stateMachine = stateMachine;
   }
 
   /**
@@ -181,148 +358,6 @@ class State implements IEventHandler {
    */
   protected transition(to: string): void {
     this._stateMachine.transition(to);
-  }
-
-  /**
-   * Determines if a state is equal.
-   *
-   * @param {(State | string)} state Specifies either state or state name.
-   * @returns {boolean} Indicates whether state met criteria.
-   *
-   * @memberOf State
-   */
-  public equals(state: State | string): boolean {
-    let name: string = null;
-
-    if (state instanceof State) {
-      name = state.name;
-    } else {
-      name = state;
-    }
-
-    name = lowerCase(trim(name ? name : ''));
-
-    return this.name === name;
-  }
-
-  /**
-   * Determines if a state has children.
-   *
-   * @param {State} state Specifies state name being tested.
-   * @returns {boolean} Indicates whether state met criteria.
-   *
-   * @memberOf State
-   */
-  public hasChildren(): boolean {
-    return this.children.length > 0;
-  }
-
-  /**
-   * Determines if a state is the parent state.
-   *
-   * @param {State} state Specifies state name being tested.
-   * @returns {boolean} Indicates whether state met criteria.
-   *
-   * @memberOf State
-   */
-  public isParent(state: State): boolean {
-    return this.parentState === state.name;
-  }
-
-  /**
-   * Determines if a state is an ancestor.
-   *
-   * @param {State} state Specifies state name being tested.
-   * @returns {boolean} Indicates whether state met criteria.
-   *
-   * @memberOf State
-   */
-  public isAncestor(state: State): boolean {
-    return findIndex(this.ancestors, ancestor => ancestor === state.name) > -1;
-  }
-
-  /**
-   * Determines if a state is a child.
-   *
-   * @param {State} state Specifies state name being tested.
-   * @returns {boolean} Indicates whether state met criteria.
-   *
-   * @memberOf State
-   */
-  public isChild(state: State): boolean {
-    return findIndex(this.children, child => child === state.name) > -1;
-  }
-
-  /**
-   * Determines if a state is a sibling.
-   *
-   * @param {State} state Specifies state name being tested.
-   * @returns {boolean} Indicates whether state met criteria.
-   *
-   * @memberOf State
-   */
-  public isSibling(state: State): boolean {
-    return findIndex(this.siblings, sibling => sibling === state.name) > -1;
-  }
-
-  /**
-   * Determines if a state is a descendant.
-   *
-   * @param {State} state
-   * @returns {boolean}
-   *
-   * @memberOf State
-   */
-  public isDescendant(state: State): boolean {
-    return (
-      findIndex(this.descendants, descendant => descendant === state.name) > -1
-    );
-  }
-
-  /**
-   * Associates a state machine with a state
-   * NOTE: This method should never be called by user; it is used internally.
-   *
-   * @param {StateMachine} stateMachine Specifies state machine.
-   * @memberOf State
-   */
-  public setStateMachine(stateMachine: StateMachine) {
-    if (!stateMachine) throw 'State machine is invalid.';
-
-    this._stateMachine = stateMachine;
-  }
-
-  /**
-   * sets subject
-   *
-   * @param subject subject of state machine
-   * @memberOf State
-   */
-  public setSubject(subject: Subject<Event>) {
-    this._subject = subject;
-  }
-
-  /**
-   * activates state
-   *
-   * @memberOf State
-   */
-  public activate() {
-    this._subscripitions.push(
-      this._subject.subscribe(event => {
-        console.log(event);
-        //this.handle(event.id, event.payload);
-      })
-    );
-  }
-
-  /**
-   * deactivates state
-   *
-   * @memberOf State
-   */
-  public deactivate() {
-    this._subscripitions.forEach(subscription => subscription.unsubscribe());
   }
 }
 

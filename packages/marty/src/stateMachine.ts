@@ -5,7 +5,8 @@ import {
   uniq,
   union,
   without,
-  indexOf
+  indexOf,
+  cloneDeep
 } from 'lodash';
 import { State } from './state';
 import { Instruction } from './instruction';
@@ -13,7 +14,7 @@ import { TOP_STATE_NAME, EXIT, ENTER } from './constants';
 import { Transition } from './transition';
 import { Event } from './event';
 import { InstructionTypes } from './instructionTypes';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 /**
  *
@@ -126,6 +127,15 @@ abstract class StateMachine {
   private _subject: Subject<Event> = new Subject<Event>();
 
   /**
+   * gets events
+   *
+   * @memberOf StateMachine
+   */
+  public getEvents(): Array<string | number> {
+    return this._events;
+  }
+
+  /**
    * Creates an instance of StateMachine.
    *
    * @param {number} [queueCapacity] Specifies queue capacity.
@@ -182,8 +192,6 @@ abstract class StateMachine {
       if (this._states[state.name])
         throw `State ${state.name} cannot be registered multiple times.`;
 
-      state.setSubject(this._subject);
-
       this._states[state.name] = state;
     });
   }
@@ -230,7 +238,6 @@ abstract class StateMachine {
       if (stateMachine.isInitialized())
         throw 'Parallel state machines must be registered uninitialized.';
 
-      stateMachine.setSubject(this._subject);
       if (stateMachine) this._stateMachines.push(stateMachine);
     });
   }
@@ -278,14 +285,22 @@ abstract class StateMachine {
 
         if (!state.equals(TOP_STATE_NAME)) {
           // Add siblings.
-          state.siblings = uniq(without(parentState.children, state.name));
+          state.addSiblings(
+            ...uniq(without(parentState.getChildren(), state.name))
+          );
 
           // Add ancestors and descendants.
           let parent: State = this._states[parentState.name];
           while (parent) {
-            state.ancestors.push(parent.name);
-            parent.descendants = uniq(
-              union(parent.descendants, parent.children, state.children)
+            state.getAncestors().push(parent.name);
+            parent.addDescendants(
+              ...uniq(
+                union(
+                  parent.getDescendants(),
+                  parent.getChildren(),
+                  state.getChildren()
+                )
+              )
             );
             parent = this._states[parent.parentState];
           }
@@ -304,7 +319,7 @@ abstract class StateMachine {
       }
 
       // Check child states.
-      forEach(state.children, c => {
+      forEach(state.getChildren(), c => {
         let child: State = this._states[c];
 
         if (!child)
@@ -317,10 +332,10 @@ abstract class StateMachine {
     });
 
     forEach(this._stateMachines, stateMachine => {
-      forEach(this._events, event => {
-        stateMachine.registerEvents(event);
-      });
-
+      stateMachine.registerEvents(
+        ...uniq(union(this._events, stateMachine.getEvents()))
+      );
+      stateMachine.setSubject(this._subject);
       stateMachine.initialize();
     });
 
@@ -344,6 +359,9 @@ abstract class StateMachine {
     }
   }
 
+  /**
+   * @memberof StateMachine
+   */
   public isInitialized(): boolean {
     return this._initialized;
   }
@@ -528,11 +546,7 @@ abstract class StateMachine {
   }
 
   private setCurrentState(state: State): void {
-    if (this._currentState) {
-      this._currentState.deactivate();
-    }
     this._currentState = state;
-    this._currentState.activate();
   }
 
   /**
@@ -668,8 +682,8 @@ abstract class StateMachine {
   private transitionToDescendant(to: State): void {
     let current = this._currentState;
 
-    for (let i = 0; i < current.children.length; i++) {
-      let child = this._states[current.children[i]];
+    for (let i = 0; i < current.getChildren().length; i++) {
+      let child = this._states[current.getChildren()[i]];
 
       if (child.equals(to) || child.isDescendant(to)) {
         current = child;
@@ -700,8 +714,8 @@ abstract class StateMachine {
     }
 
     while (!current.equals(to)) {
-      for (let i = 0; i < current.children.length; i++) {
-        let child = this._states[current.children[i]];
+      for (let i = 0; i < current.getChildren().length; i++) {
+        let child = this._states[current.getChildren()[i]];
 
         if (child.equals(to) || child.isDescendant(to)) {
           current = child;
