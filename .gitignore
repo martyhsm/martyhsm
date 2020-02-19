@@ -1,6 +1,5 @@
 node_modules/
 packages/*/lib
 .idea
-*-debug.log
-*-error.log
+*.log
 coverage
