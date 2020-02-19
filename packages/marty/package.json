@@ -1,6 +1,6 @@
 {
   "name": "@martyhsm/marty",
-  "version": "2.0.3",
+  "version": "2.0.0",
   "description": "",
   "author": "Brandon Phillips <brandon.phillips@trooso.com>",
   "homepage": "",
@@ -39,5 +39,6 @@
   "jest": {
     "preset": "ts-jest"
   },
-  "types": "lib/index.d.ts"
+  "types": "lib/index.d.ts",
+  "gitHead": "1b2570db6a4c5023762f2fd0eb52f4290979a43d"
 }
