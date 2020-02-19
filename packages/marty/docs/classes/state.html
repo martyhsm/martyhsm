@@ -83,26 +83,6 @@
 				<ul class="tsd-hierarchy">
 					<li>
 						<span class="target">State</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="top.html" class="tsd-signature-type">Top</a>
-							</li>
-							<li>
-								<a href="on.html" class="tsd-signature-type">On</a>
-							</li>
-							<li>
-								<a href="red.html" class="tsd-signature-type">Red</a>
-							</li>
-							<li>
-								<a href="yellow.html" class="tsd-signature-type">Yellow</a>
-							</li>
-							<li>
-								<a href="green.html" class="tsd-signature-type">Green</a>
-							</li>
-							<li>
-								<a href="off.html" class="tsd-signature-type">Off</a>
-							</li>
-						</ul>
 					</li>
 				</ul>
 			</section>
@@ -125,23 +105,30 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="state.html#_ancestors" class="tsd-kind-icon">_ancestors</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="state.html#_children" class="tsd-kind-icon">_children</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="state.html#_descendants" class="tsd-kind-icon">_descendants</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="state.html#_siblings" class="tsd-kind-icon">_siblings</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="state.html#_statemachine" class="tsd-kind-icon">_state<wbr>Machine</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="state.html#ancestors" class="tsd-kind-icon">ancestors</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="state.html#cantransition" class="tsd-kind-icon">can<wbr>Transition</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="state.html#children" class="tsd-kind-icon">children</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="state.html#descendants" class="tsd-kind-icon">descendants</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="state.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="state.html#parentstate" class="tsd-kind-icon">parent<wbr>State</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="state.html#siblings" class="tsd-kind-icon">siblings</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="state.html#startstate" class="tsd-kind-icon">start<wbr>State</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="state.html#addancestors" class="tsd-kind-icon">add<wbr>Ancestors</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="state.html#addchildren" class="tsd-kind-icon">add<wbr>Children</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="state.html#adddescendants" class="tsd-kind-icon">add<wbr>Descendants</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="state.html#addsiblings" class="tsd-kind-icon">add<wbr>Siblings</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="state.html#emit" class="tsd-kind-icon">emit</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="state.html#equals" class="tsd-kind-icon">equals</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="state.html#getancestors" class="tsd-kind-icon">get<wbr>Ancestors</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="state.html#getchildren" class="tsd-kind-icon">get<wbr>Children</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="state.html#getdescendants" class="tsd-kind-icon">get<wbr>Descendants</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="state.html#getsiblings" class="tsd-kind-icon">get<wbr>Siblings</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="state.html#handle" class="tsd-kind-icon">handle</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="state.html#haschildren" class="tsd-kind-icon">has<wbr>Children</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="state.html#isancestor" class="tsd-kind-icon">is<wbr>Ancestor</a></li>
@@ -162,13 +149,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>State<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parentState<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, startState<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="state.html" class="tsd-signature-type">State</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>State<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parentState<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="state.html" class="tsd-signature-type">State</a>, startState<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="state.html" class="tsd-signature-type">State</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/state.ts:91</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L86">state.ts:86</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -192,10 +179,10 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> parentState: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = null</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> parentState: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> = null</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> startState: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = null</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> startState: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> = null</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="state.html" class="tsd-signature-type">State</a></h4>
@@ -206,32 +193,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_statemachine" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _state<wbr>Machine</h3>
-					<div class="tsd-signature tsd-kind-icon">_state<wbr>Machine<span class="tsd-signature-symbol">:</span> <a href="statemachine.html" class="tsd-signature-type">StateMachine</a><span class="tsd-signature-symbol"> = null</span></div>
+					<a name="_ancestors" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _ancestors</h3>
+					<div class="tsd-signature tsd-kind-icon">_ancestors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/state.ts:91</li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Stores state machine.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>memberof</dt>
-							<dd><p>State</p>
-							</dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="ancestors" class="tsd-anchor"></a>
-					<h3>ancestors</h3>
-					<div class="tsd-signature tsd-kind-icon">ancestors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = []</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in src/state.ts:72</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L69">state.ts:69</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -245,30 +212,13 @@
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="cantransition" class="tsd-anchor"></a>
-					<h3>can<wbr>Transition</h3>
-					<div class="tsd-signature tsd-kind-icon">can<wbr>Transition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_children" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _children</h3>
+					<div class="tsd-signature tsd-kind-icon">_children<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/state.ts:27</li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<dl class="tsd-comment-tags">
-							<dt>memberof</dt>
-							<dd><p>State</p>
-							</dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="children" class="tsd-anchor"></a>
-					<h3>children</h3>
-					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = []</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in src/state.ts:54</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L53">state.ts:53</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -282,18 +232,78 @@
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="descendants" class="tsd-anchor"></a>
-					<h3>descendants</h3>
-					<div class="tsd-signature tsd-kind-icon">descendants<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = []</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_descendants" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _descendants</h3>
+					<div class="tsd-signature tsd-kind-icon">_descendants<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/state.ts:81</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L77">state.ts:77</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Gets or sets descendants.</p>
+							<p>gets or sets descendants.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>State</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_siblings" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _siblings</h3>
+					<div class="tsd-signature tsd-kind-icon">_siblings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L61">state.ts:61</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Gets or sets siblings.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>State</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_statemachine" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _state<wbr>Machine</h3>
+					<div class="tsd-signature tsd-kind-icon">_state<wbr>Machine<span class="tsd-signature-symbol">:</span> <a href="statemachine.html" class="tsd-signature-type">StateMachine</a><span class="tsd-signature-symbol"> = null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L86">state.ts:86</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>stores state machine.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>State</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="cantransition" class="tsd-anchor"></a>
+					<h3>can<wbr>Transition</h3>
+					<div class="tsd-signature tsd-kind-icon">can<wbr>Transition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L29">state.ts:29</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>indicates whether a transition is possible</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
@@ -308,10 +318,13 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/state.ts:19</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L21">state.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>specifies name of state</p>
+						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
 							<dd><p>State</p>
@@ -325,7 +338,7 @@
 					<div class="tsd-signature tsd-kind-icon">parent<wbr>State<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/state.ts:36</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L37">state.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -340,32 +353,12 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="siblings" class="tsd-anchor"></a>
-					<h3>siblings</h3>
-					<div class="tsd-signature tsd-kind-icon">siblings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = []</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in src/state.ts:63</li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Gets or sets siblings.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>memberof</dt>
-							<dd><p>State</p>
-							</dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="startstate" class="tsd-anchor"></a>
 					<h3>start<wbr>State</h3>
 					<div class="tsd-signature tsd-kind-icon">start<wbr>State<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/state.ts:45</li>
+							<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L45">state.ts:45</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -383,16 +376,39 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="addchildren" class="tsd-anchor"></a>
-					<h3>add<wbr>Children</h3>
+					<a name="addancestors" class="tsd-anchor"></a>
+					<h3>add<wbr>Ancestors</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Children<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>stateNames<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Ancestors<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>states<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/state.ts:139</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L150">state.ts:150</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>states: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addchildren" class="tsd-anchor"></a>
+					<h3>add<wbr>Children</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Children<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>states<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L135">state.ts:135</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -408,10 +424,53 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>stateNames: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Specifies name of children.</p>
-									</div>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>states: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="adddescendants" class="tsd-anchor"></a>
+					<h3>add<wbr>Descendants</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Descendants<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>states<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L165">state.ts:165</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>states: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addsiblings" class="tsd-anchor"></a>
+					<h3>add<wbr>Siblings</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Siblings<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>states<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L180">state.ts:180</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>states: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -428,7 +487,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/state.ts:164</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L316">state.ts:316</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -467,7 +526,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/state.ts:194</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L203">state.ts:203</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -495,17 +554,84 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="handle" class="tsd-anchor"></a>
-					<h3>handle</h3>
+					<a name="getancestors" class="tsd-anchor"></a>
+					<h3>get<wbr>Ancestors</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">handle<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, payload<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Ancestors<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/ieventhandler.html">IEventHandler</a>.<a href="../interfaces/ieventhandler.html#handle">handle</a></p>
 								<ul>
-									<li>Defined in src/state.ts:129</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L161">state.ts:161</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getchildren" class="tsd-anchor"></a>
+					<h3>get<wbr>Children</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Children<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L146">state.ts:146</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getdescendants" class="tsd-anchor"></a>
+					<h3>get<wbr>Descendants</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Descendants<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L176">state.ts:176</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getsiblings" class="tsd-anchor"></a>
+					<h3>get<wbr>Siblings</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Siblings<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L191">state.ts:191</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="handle" class="tsd-anchor"></a>
+					<h3>handle</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">handle<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, payload<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L124">state.ts:124</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -521,7 +647,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>event: <span class="tsd-signature-type">number</span></h5>
+									<h5>event: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Specifies an event ID.</p>
 									</div>
@@ -545,7 +671,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/state.ts:219</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L227">state.ts:227</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -567,13 +693,13 @@
 					<a name="isancestor" class="tsd-anchor"></a>
 					<h3>is<wbr>Ancestor</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Ancestor<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Ancestor<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/state.ts:245</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L251">state.ts:251</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -589,7 +715,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>state: <a href="state.html" class="tsd-signature-type">State</a></h5>
+									<h5>state: <a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Specifies state name being tested.</p>
 									</div>
@@ -604,13 +730,13 @@
 					<a name="ischild" class="tsd-anchor"></a>
 					<h3>is<wbr>Child</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Child<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Child<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/state.ts:258</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L263">state.ts:263</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -626,7 +752,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>state: <a href="state.html" class="tsd-signature-type">State</a></h5>
+									<h5>state: <a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Specifies state name being tested.</p>
 									</div>
@@ -641,13 +767,13 @@
 					<a name="isdescendant" class="tsd-anchor"></a>
 					<h3>is<wbr>Descendant</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Descendant<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Descendant<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/state.ts:284</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L287">state.ts:287</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -663,7 +789,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>state: <a href="state.html" class="tsd-signature-type">State</a></h5>
+									<h5>state: <a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -674,13 +800,13 @@
 					<a name="isparent" class="tsd-anchor"></a>
 					<h3>is<wbr>Parent</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Parent<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Parent<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/state.ts:232</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L239">state.ts:239</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -696,7 +822,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>state: <a href="state.html" class="tsd-signature-type">State</a></h5>
+									<h5>state: <a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Specifies state name being tested.</p>
 									</div>
@@ -711,13 +837,13 @@
 					<a name="issibling" class="tsd-anchor"></a>
 					<h3>is<wbr>Sibling</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Sibling<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Sibling<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/state.ts:271</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L275">state.ts:275</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -733,7 +859,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>state: <a href="state.html" class="tsd-signature-type">State</a></h5>
+									<h5>state: <a href="state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Specifies state name being tested.</p>
 									</div>
@@ -754,7 +880,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/state.ts:297</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L300">state.ts:300</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -791,7 +917,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/state.ts:179</li>
+									<li>Defined in <a href="https://github.com/martyhsm/martyhsm/blob/5a794e1/packages/marty/src/state.ts#L328">state.ts:328</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -836,19 +962,7 @@
 						<a href="event.html" class="tsd-kind-icon">Event</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="green.html" class="tsd-kind-icon">Green</a>
-					</li>
-					<li class=" tsd-kind-class">
 						<a href="instruction.html" class="tsd-kind-icon">Instruction</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="off.html" class="tsd-kind-icon">Off</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="on.html" class="tsd-kind-icon">On</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="red.html" class="tsd-kind-icon">Red</a>
 					</li>
 				</ul>
 				<ul class="current">
@@ -859,19 +973,22 @@
 								<a href="state.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="state.html#_ancestors" class="tsd-kind-icon">_ancestors</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="state.html#_children" class="tsd-kind-icon">_children</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="state.html#_descendants" class="tsd-kind-icon">_descendants</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="state.html#_siblings" class="tsd-kind-icon">_siblings</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="state.html#_statemachine" class="tsd-kind-icon">_state<wbr>Machine</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="state.html#ancestors" class="tsd-kind-icon">ancestors</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="state.html#cantransition" class="tsd-kind-icon">can<wbr>Transition</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="state.html#children" class="tsd-kind-icon">children</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="state.html#descendants" class="tsd-kind-icon">descendants</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="state.html#name" class="tsd-kind-icon">name</a>
@@ -880,19 +997,37 @@
 								<a href="state.html#parentstate" class="tsd-kind-icon">parent<wbr>State</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="state.html#siblings" class="tsd-kind-icon">siblings</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="state.html#startstate" class="tsd-kind-icon">start<wbr>State</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="state.html#addancestors" class="tsd-kind-icon">add<wbr>Ancestors</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="state.html#addchildren" class="tsd-kind-icon">add<wbr>Children</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="state.html#adddescendants" class="tsd-kind-icon">add<wbr>Descendants</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="state.html#addsiblings" class="tsd-kind-icon">add<wbr>Siblings</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 								<a href="state.html#emit" class="tsd-kind-icon">emit</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="state.html#equals" class="tsd-kind-icon">equals</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="state.html#getancestors" class="tsd-kind-icon">get<wbr>Ancestors</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="state.html#getchildren" class="tsd-kind-icon">get<wbr>Children</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="state.html#getdescendants" class="tsd-kind-icon">get<wbr>Descendants</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="state.html#getsiblings" class="tsd-kind-icon">get<wbr>Siblings</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="state.html#handle" class="tsd-kind-icon">handle</a>
@@ -929,25 +1064,13 @@
 						<a href="statemachine.html" class="tsd-kind-icon">State<wbr>Machine</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="stoplightstatemachine.html" class="tsd-kind-icon">Stoplight<wbr>State<wbr>Machine</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="top.html" class="tsd-kind-icon">Top</a>
-					</li>
-					<li class=" tsd-kind-class">
 						<a href="transition.html" class="tsd-kind-icon">Transition</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="yellow.html" class="tsd-kind-icon">Yellow</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/ieventhandler.html" class="tsd-kind-icon">IEvent<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/itransitionhandler.html" class="tsd-kind-icon">ITransition<wbr>Handler</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#crash" class="tsd-kind-icon">Crash</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="../globals.html#enter" class="tsd-kind-icon">ENTER</a>
@@ -957,24 +1080,6 @@
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="../globals.html#top_state_name" class="tsd-kind-icon">TOP_<wbr>STATE_<wbr>NAME</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#turngreen" class="tsd-kind-icon">Turn<wbr>Green</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#turnoff" class="tsd-kind-icon">Turn<wbr>Off</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#turnon" class="tsd-kind-icon">Turn<wbr>On</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#turnred" class="tsd-kind-icon">Turn<wbr>Red</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#turnyellow" class="tsd-kind-icon">Turn<wbr>Yellow</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#testobject" class="tsd-kind-icon">test<wbr>Object</a>
 					</li>
 				</ul>
 			</nav>

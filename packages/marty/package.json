@@ -18,10 +18,12 @@
     "build": "yarn clean && yarn tsc",
     "clean": "rimraf lib",
     "tsc": "tsc",
-    "test": "jest",
-    "docs": "typedoc --out docs src",
-    "example": "ts-node example/example.ts",
-    "commit": "git add . && npx git-cz"
+    "test": "jest --collect-coverage --logHeapUsage --verbose --silent",
+    "test:watch": "jest --collect-coverage --watchAll --logHeapUsage --verbose --silent",
+    "docs": "npx typedoc --out docs src",
+    "example": "npx ts-node example/example.ts",
+    "commit": "yarn format && git add . && npx git-cz",
+    "format": "prettier --write \"src/**/*.ts\" \"__tests__/**/*.ts\" \"example/**/*.ts\" \"index.ts\""
   },
   "dependencies": {
     "lodash": "^4.17.15"
@@ -30,6 +32,7 @@
     "@types/jest": "^25.1.2",
     "@types/lodash": "^4.14.149",
     "jest": "^25.1.0",
+    "prettier": "^1.19.1",
     "ts-jest": "^25.2.0",
     "typescript": "^3.7.5"
   },

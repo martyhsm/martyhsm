@@ -13,4 +13,4 @@ This is an implementation of a hierarchical state machine (HSM) or a statechart 
 
 - **Instruction**: a directive that needs to be fulfilled by the state machine; currently, these are just events and transitions. generalizing them makes them easier to queue.
 
-- **Instruction Queue**: queues instructions so that fewer events are dropped in case of multiple threads
+- **Instruction Queue**: queues instructions so that fewer events are (potentially) dropped
