@@ -93,7 +93,7 @@
         "decamelize": "^1.2.0",
         "decamelize-keys": "^1.1.0",
         "dedent": "^0.7.0",
-        "deep-extend": "^0.4.2",
+        "deep-extend": "^0.5.1",
         "defaults": "^1.0.3",
         "delegates": "^1.0.0",
         "detect-indent": "^5.0.0",
