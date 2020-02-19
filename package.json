@@ -34,7 +34,6 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "rxjs": "^6.5.4"
   },
   "repository": {
     "type": "git",
