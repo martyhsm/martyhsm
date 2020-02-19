@@ -1,6 +1,7 @@
-import { Instruction } from "./instruction";
-import { ENTER, EXIT } from "./constants";
-import { InstructionTypes } from "./instructionTypes";
+import { Instruction } from './instruction';
+import { ENTER, EXIT } from './constants';
+import { InstructionTypes } from './instructionTypes';
+import { trim } from 'lodash';
 
 /**
  *
@@ -10,29 +11,41 @@ import { InstructionTypes } from "./instructionTypes";
  * @extends {Instruction}
  */
 export class Event extends Instruction {
-    /**
-     * Creates an instance of Event.
-     *
-     * @param {number} id
-     * @param {*} [payload]
-     *
-     * @memberOf Event
-     */
-    constructor(public id : number, public payload?: any) {
-        super(InstructionTypes.Event);
-    }
+  /**
+   * Creates an instance of Event.
+   *
+   * @param {number | string} id
+   * @param {*} [payload]
+   *
+   * @memberOf Event
+   */
+  constructor(public id: number | string, public payload?: any) {
+    super(InstructionTypes.Event);
 
-    /**
-     *
-     * Determines whether an event is an infrastructure (or reserved) event.
-     *
-     * @static
-     * @param {number} id Specifies event ID.
-     * @returns Indicates wehtehr an event is an infrastructure event.
-     *
-     * @memberOf Event
-     */
-    static isInfrastructureEvent(id : number) {
-        return id === ENTER || id === EXIT;
+    if (
+      id === null ||
+      id === undefined ||
+      (typeof id === 'string' && !trim(id))
+    ) {
+      throw new Error(`Event ID ${id} is invalid.`);
     }
+  }
+
+  /**
+   *
+   * Determines whether an event is an infrastructure (or reserved) event.
+   *
+   * @static
+   * @param {number} id Specifies event ID.
+   * @returns Indicates wehtehr an event is an infrastructure event.
+   *
+   * @memberOf Event
+   */
+  static isInfrastructureEvent(id: number | string) {
+    return id == ENTER || id == EXIT;
+  }
+
+  static getInfrastructureEvents(): Array<string | number> {
+    return [ENTER, EXIT];
+  }
 }

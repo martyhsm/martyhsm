@@ -1,12 +1,12 @@
-import { StoplightStateMachine, TurnOn, Crash } from './stoplight'
+import { StoplightStateMachine, TurnOn, Crash } from './stoplight';
 
-const testObject: StoplightStateMachine = new StoplightStateMachine();
+const testStateMachine: StoplightStateMachine = new StoplightStateMachine();
 
-testObject.initialize();
+testStateMachine.initialize();
 
-testObject.handle(TurnOn);
+testStateMachine.handle(TurnOn);
 
-// A random crash will happen some time between [12, 45] seconds.
+// A random crash will happen some time between [5, 20] seconds.
 setTimeout(() => {
-    testObject.handle(Crash);
-}, Math.random() * (45000 - 12000) + 12000);
+  testStateMachine.handle(Crash);
+}, Math.random() * (20000 - 5000) + 5000);

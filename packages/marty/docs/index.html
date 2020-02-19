@@ -1,0 +1,509 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@martyhsm/marty</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@martyhsm/marty</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>@martyhsm/marty</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#marty" id="marty" style="color: inherit; text-decoration: none;">
+					<h1>Marty</h1>
+				</a>
+				<p>This is an implementation of a hierarchical state machine (HSM) or a statechart with a few new features like:</p>
+				<ul>
+					<li>instruction queuing</li>
+					<li>event payloads</li>
+					<li>&quot;parallel&quot; state machines</li>
+				</ul>
+				<a href="#new-terminology" id="new-terminology" style="color: inherit; text-decoration: none;">
+					<h2>New Terminology</h2>
+				</a>
+				<ul>
+					<li><p><strong>Emitted Events</strong>: internal events that are sent to a state machine by one of its states to be handled; all other events are external and sent to a state machine by the user&#39;s code to be handled</p>
+					</li>
+					<li><p><strong>&quot;Parallel&quot; State Machines</strong>: child state machines that handle the same external/internal events as its host state machine; they can have events of their own, but they cannot collide with host events</p>
+					</li>
+					<li><p><strong>Event Payloads</strong>: metadata sent along with an event that is needed to process the event</p>
+					</li>
+					<li><p><strong>Instruction</strong>: a directive that needs to be fulfilled by the state machine; currently, these are just events and transitions. generalizing them makes them easier to queue.</p>
+					</li>
+					<li><p><strong>Instruction Queue</strong>: queues instructions so that fewer events are dropped in case of multiple threads</p>
+					</li>
+				</ul>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<a href="#updating-the-code-in-this-repo" id="updating-the-code-in-this-repo" style="color: inherit; text-decoration: none;">
+					<h3>Updating the code in this repo</h3>
+				</a>
+				<p>If you plan to make changes to the code, then here are some steps to get your started in building and testing the code.</p>
+				<a href="#installing" id="installing" style="color: inherit; text-decoration: none;">
+					<h4>Installing</h4>
+				</a>
+				<pre><code class="language-shell">yarn</code></pre>
+				<p>or </p>
+				<pre><code class="language-shell">npm install</code></pre>
+				<a href="#building" id="building" style="color: inherit; text-decoration: none;">
+					<h4>Building</h4>
+				</a>
+				<pre><code class="language-shell">npm run build</code></pre>
+				<a href="#testing" id="testing" style="color: inherit; text-decoration: none;">
+					<h4>Testing</h4>
+				</a>
+				<pre><code class="language-shell">npm run test</code></pre>
+				<p><strong><em>NOTE</em>: There are only a few tests at the moment, but feel free to add!</strong></p>
+				<a href="#including-in-browser" id="including-in-browser" style="color: inherit; text-decoration: none;">
+					<h4>Including in browser</h4>
+				</a>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"~/node_modules/dist/marty.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<a href="#running-example" id="running-example" style="color: inherit; text-decoration: none;">
+					<h4>Running example</h4>
+				</a>
+				<p>Open the included ./example/index.html file in a browser (after installing dependencies and running build), and the example code will execute.</p>
+				<p>Here is an example of the output (NOTE: the output is random, so yours could look different):</p>
+				<p><img src="https://github.com/martyhsm/martyhsm/blob/master/images/example_output.PNG?raw=true" alt="alt tag"></p>
+				<a href="#creating-an-hsm" id="creating-an-hsm" style="color: inherit; text-decoration: none;">
+					<h3>Creating an HSM</h3>
+				</a>
+				<p>In this example, we&#39;ll just make a state machine for an autonomous stoplight that is set to run for 60 seconds. It will iterate through red, yellow, and great lights. Randomly, someone will crash into the stop light OR it will go off naturally. Here&#39;s a diagram:</p>
+				<p><img src="https://github.com/martyhsm/martyhsm/blob/master/images/stoplight.png?raw=true" alt="alt tag"></p>
+				<a href="#create-some-events-for-your-state-machine" id="create-some-events-for-your-state-machine" style="color: inherit; text-decoration: none;">
+					<h4>Create some events for your state machine.</h4>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> TurnOn: <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">const</span> TurnRed: <span class="hljs-built_in">number</span> = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">const</span> TurnYellow: <span class="hljs-built_in">number</span> = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">const</span> TurnGreen: <span class="hljs-built_in">number</span> = <span class="hljs-number">3</span>;
+<span class="hljs-keyword">const</span> TurnOff: <span class="hljs-built_in">number</span> = <span class="hljs-number">4</span>;
+<span class="hljs-keyword">const</span> Crash: <span class="hljs-built_in">number</span> = <span class="hljs-number">5</span>;</code></pre>
+				<a href="#create-some-states-for-your-state-machine" id="create-some-states-for-your-state-machine" style="color: inherit; text-decoration: none;">
+					<h4>Create some states for your state machine.</h4>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">class</span> Top <span class="hljs-keyword">extends</span> State {
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">super</span>(TOP_STATE_NAME);
+    }
+
+    handle(event: <span class="hljs-built_in">number</span>, payload?: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">boolean</span> {
+        <span class="hljs-keyword">switch</span>(event) {
+            <span class="hljs-keyword">case</span> Crash:
+                <span class="hljs-keyword">this</span>.crash();                
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+
+            <span class="hljs-keyword">case</span> TurnOff:
+                <span class="hljs-keyword">this</span>.transition(<span class="hljs-string">"Off"</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+
+    <span class="hljs-comment">// We can create actions to call on events; this keeps code modular and clean.</span>
+    <span class="hljs-keyword">private</span> crash(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Oh no! Someone crashed into the stoplight!'</span>);
+        <span class="hljs-keyword">this</span>.emit(TurnOff);
+    }
+}
+
+<span class="hljs-keyword">class</span> On <span class="hljs-keyword">extends</span> State {
+    _timer: <span class="hljs-built_in">any</span> = <span class="hljs-literal">null</span>;
+
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">super</span>(<span class="hljs-string">"On"</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">"Red"</span>); <span class="hljs-comment">// Parent and start states are set in constructor (if needed).</span>
+    }
+
+    handle(event: <span class="hljs-built_in">number</span>, payload?: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">boolean</span> {
+        <span class="hljs-keyword">switch</span> (event) {
+            <span class="hljs-keyword">case</span> ENTER:
+                <span class="hljs-keyword">this</span>._timer = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {                    
+                    <span class="hljs-keyword">this</span>.emit(TurnOff); <span class="hljs-comment">// Internal events are thrown using the 'emit' function.</span>
+                }, <span class="hljs-number">60000</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+
+            <span class="hljs-keyword">case</span> TurnOff:
+                <span class="hljs-keyword">this</span>.transition(<span class="hljs-string">"Off"</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+
+            <span class="hljs-keyword">case</span> EXIT:
+                clearTimeout(<span class="hljs-keyword">this</span>._timer);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+}
+
+<span class="hljs-keyword">class</span> Red <span class="hljs-keyword">extends</span> State {
+    _timer: <span class="hljs-built_in">any</span> = <span class="hljs-literal">null</span>;
+
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">super</span>(<span class="hljs-string">"Red"</span>, <span class="hljs-string">"On"</span>);
+    }
+
+    handle(event: <span class="hljs-built_in">number</span>, payload?: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">boolean</span> {
+        <span class="hljs-keyword">switch</span> (event) {
+            <span class="hljs-keyword">case</span> ENTER:
+                <span class="hljs-keyword">this</span>._timer = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { 
+                    <span class="hljs-keyword">this</span>.emit(TurnGreen); 
+                }, <span class="hljs-number">10000</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+
+            <span class="hljs-keyword">case</span> TurnGreen:
+                <span class="hljs-keyword">this</span>.transition(<span class="hljs-string">"Green"</span>); <span class="hljs-comment">// Transitions can be queued using the 'transition' function.</span>
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+
+            <span class="hljs-keyword">case</span> EXIT:
+                clearTimeout(<span class="hljs-keyword">this</span>._timer);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+}
+
+<span class="hljs-keyword">class</span> Yellow <span class="hljs-keyword">extends</span> State {
+    _timer: <span class="hljs-built_in">any</span> = <span class="hljs-literal">null</span>;
+
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">super</span>(<span class="hljs-string">"Yellow"</span>, <span class="hljs-string">"On"</span>);
+    }
+
+    handle(event: <span class="hljs-built_in">number</span>, payload?: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">boolean</span> {
+        <span class="hljs-keyword">switch</span> (event) {
+            <span class="hljs-keyword">case</span> ENTER:
+                <span class="hljs-keyword">this</span>._timer = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {                 
+                    <span class="hljs-keyword">this</span>.handle(TurnRed); 
+                }, <span class="hljs-number">5000</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+
+            <span class="hljs-keyword">case</span> TurnRed:
+                <span class="hljs-keyword">this</span>.transition(<span class="hljs-string">"Red"</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+
+            <span class="hljs-keyword">case</span> EXIT:
+                clearTimeout(<span class="hljs-keyword">this</span>._timer);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+}
+
+<span class="hljs-keyword">class</span> Green <span class="hljs-keyword">extends</span> State {
+    _timer: <span class="hljs-built_in">any</span> = <span class="hljs-literal">null</span>;
+
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">super</span>(<span class="hljs-string">"Green"</span>, <span class="hljs-string">"On"</span>);
+    }
+
+    handle(event: <span class="hljs-built_in">number</span>, payload?: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">boolean</span> {
+        <span class="hljs-keyword">switch</span> (event) {
+            <span class="hljs-keyword">case</span> ENTER:
+                <span class="hljs-keyword">this</span>._timer = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {                 
+                    <span class="hljs-keyword">this</span>.handle(TurnYellow); 
+                }, <span class="hljs-number">10000</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+
+            <span class="hljs-keyword">case</span> TurnYellow:
+                <span class="hljs-keyword">this</span>.transition(<span class="hljs-string">"Yellow"</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+
+            <span class="hljs-keyword">case</span> TurnRed:           
+                <span class="hljs-keyword">this</span>.handle(TurnYellow);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+
+            <span class="hljs-keyword">case</span> EXIT:
+                clearTimeout(<span class="hljs-keyword">this</span>._timer);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+}
+
+<span class="hljs-keyword">class</span> Off <span class="hljs-keyword">extends</span> State {
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">super</span>(<span class="hljs-string">"Off"</span>); <span class="hljs-comment">// States that don't specify a parent will be assigned top as a parent automatically.</span>
+    }
+
+
+    handle(event: <span class="hljs-built_in">number</span>, payload?: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">boolean</span> {
+        <span class="hljs-comment">// Notice states do not have to handle ENTER/EXIT events if there are no actions on them.</span>
+        <span class="hljs-keyword">switch</span> (event) {
+            <span class="hljs-keyword">case</span> TurnOn:
+                <span class="hljs-keyword">this</span>.transition(<span class="hljs-string">"On"</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+
+            <span class="hljs-comment">// Preventing "TurnOff" event from being being propogated upward when state machine is already</span>
+            <span class="hljs-comment">// if "Off" state.</span>
+            <span class="hljs-keyword">case</span> TurnOff:
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+}
+</code></pre>
+				<a href="#create-and-wire-up-your-state-machine" id="create-and-wire-up-your-state-machine" style="color: inherit; text-decoration: none;">
+					<h4>Create and wire up your state machine.</h4>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">class</span> StoplightStateMachine <span class="hljs-keyword">extends</span> StateMachine {
+    <span class="hljs-keyword">private</span> _on: On = <span class="hljs-keyword">new</span> On();
+    <span class="hljs-keyword">private</span> _red: Red = <span class="hljs-keyword">new</span> Red();
+    <span class="hljs-keyword">private</span> _yellow: Yellow = <span class="hljs-keyword">new</span> Yellow();
+    <span class="hljs-keyword">private</span> _green: Green = <span class="hljs-keyword">new</span> Green();
+    <span class="hljs-keyword">private</span> _off: Off = <span class="hljs-keyword">new</span> Off();
+
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">super</span>(<span class="hljs-number">1</span>, <span class="hljs-keyword">new</span> Top(), <span class="hljs-string">"Off"</span>); <span class="hljs-comment">// Notice a queue capacity of 1 and a custom top state.</span>
+
+        <span class="hljs-keyword">this</span>.registerStates(
+            <span class="hljs-keyword">this</span>._on, 
+            <span class="hljs-keyword">this</span>._red, 
+            <span class="hljs-keyword">this</span>._yellow, 
+            <span class="hljs-keyword">this</span>._green, 
+            <span class="hljs-keyword">this</span>._off);
+
+        <span class="hljs-keyword">this</span>.registerEvents(
+            TurnOn, 
+            TurnOff, 
+            TurnRed, 
+            TurnYellow, 
+            TurnGreen,
+            Crash);
+    }
+}</code></pre>
+				<a href="#use-your-state-machine" id="use-your-state-machine" style="color: inherit; text-decoration: none;">
+					<h4>Use your state machine.</h4>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> stoplightStateMachine = <span class="hljs-keyword">new</span> StoplightStateMachine();
+
+stoplightStateMachine.initialize();
+
+stoplightStateMachine.handle(TurnOn);
+
+<span class="hljs-comment">// A random crash will happen some time between [30, 60] seconds; this is an external event.</span>
+setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    stoplightStateMachine.handle(Crash);
+}, <span class="hljs-built_in">Math</span>.random() * (<span class="hljs-number">60000</span> - <span class="hljs-number">30000</span>) + <span class="hljs-number">30000</span>);</code></pre>
+				<a href="#dependencies" id="dependencies" style="color: inherit; text-decoration: none;">
+					<h2>Dependencies</h2>
+				</a>
+				<p>This project uses:</p>
+				<ul>
+					<li>Npm or Yarn</li>
+					<li>Typescript</li>
+					<li>Webpack</li>
+					<li>Lodash</li>
+				</ul>
+				<a href="#remaining-work" id="remaining-work" style="color: inherit; text-decoration: none;">
+					<h2>Remaining Work</h2>
+				</a>
+				<p>Though this should be good to use, the following things still need to be done to improve the quality of this repo and source code:</p>
+				<ul>
+					<li><p>Refactor any areas that are hard to understand</p>
+					</li>
+					<li><p>Create tests (unit, performance, e2e, etc.)</p>
+					</li>
+					<li><p>Remove dead code and unused frameworks/libraries</p>
+					</li>
+					<li><p>Look for more opportunites to use es2015+ features</p>
+					</li>
+					<li><p>Get source onto bower and other platforms</p>
+					</li>
+					<li><p>Add Top state error checks (i.e. no parents, no explicit children, etc.)</p>
+					</li>
+					<li><p>Named events vs. IDs?</p>
+					</li>
+					<li><p>Non-inherited states? (Possibly pass in an event handler function? Does this impact &quot;this&quot; reference?). For instance:</p>
+						<pre><code class="language-typecript">  function handle(event: number, payload?: any) {
+      switch(event) {
+          ...
+      }
+
+      return false;
+  }
+
+  let state = new State(&quot;name&quot;, handle, &quot;parent&quot;, &quot;start&quot;);</code></pre>
+					</li>
+					<li><p>Add more obscure error checks like setting a parent as a child.</p>
+					</li>
+					<li><p>Determine if parallel state machines should be allowed to have a custom top state or how to protect it from being same as the host state machine</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/instructiontypes.html" class="tsd-kind-icon">Instruction<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/event.html" class="tsd-kind-icon">Event</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/instruction.html" class="tsd-kind-icon">Instruction</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/state.html" class="tsd-kind-icon">State</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/statemachine.html" class="tsd-kind-icon">State<wbr>Machine</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/transition.html" class="tsd-kind-icon">Transition</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ieventhandler.html" class="tsd-kind-icon">IEvent<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itransitionhandler.html" class="tsd-kind-icon">ITransition<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#enter" class="tsd-kind-icon">ENTER</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#exit" class="tsd-kind-icon">EXIT</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#top_state_name" class="tsd-kind-icon">TOP_<wbr>STATE_<wbr>NAME</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

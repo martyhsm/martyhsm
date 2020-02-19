@@ -1,0 +1,5 @@
+{
+    "inputFiles": ["index.ts", "./src"],
+    "mode": "file",
+    "out": "docs"
+}
